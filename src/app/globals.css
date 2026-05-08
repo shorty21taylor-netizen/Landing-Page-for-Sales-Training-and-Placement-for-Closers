@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --text: #ffffff;
+  --text-muted: #9ca3af;
+  --accent: #60a5fa;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.text-silver {
+  background: linear-gradient(135deg, #ffffff 0%, #a8a8a8 50%, #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.divider-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%);
+}
+
+@keyframes grid-drift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(64px, 64px); }
+}
+.animate-grid-drift { animation: grid-drift 25s linear infinite; }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.btn-shimmer {
+  background: linear-gradient(90deg, #ffffff 0%, #e5e5e5 25%, #ffffff 50%, #e5e5e5 75%, #ffffff 100%);
+  background-size: 200% 100%;
+  transition: background-position 0.6s ease;
+}
+.btn-shimmer:hover { animation: shimmer 1.2s ease infinite; }
+
+@keyframes pulse-ring {
+  0%, 100% { box-shadow: 0 0 60px -15px rgba(96,165,250,0.3); }
+  50% { box-shadow: 0 0 80px -10px rgba(96,165,250,0.45); }
+}
+.vsl-glow { animation: pulse-ring 4s ease-in-out infinite; }
