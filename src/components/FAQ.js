@@ -3,24 +3,28 @@ import { useState } from "react";
 
 const faqs = [
   {
-    q: "How fast can a closer actually be placed?",
-    a: "Our average is 14 days from application to first live call. Some clients move faster if their offer + scripts are already documented.",
+    q: "Do I need any sales experience to apply?",
+    a: "No. Most of our top performers had zero sales experience when they started. We've placed bartenders, college students, ex-military, and corporate burnouts. What we screen for is coachability, work ethic, and clear communication.",
   },
   {
-    q: "What kind of businesses do you work with?",
-    a: "High-ticket coaches, agencies, B2B service providers, and SaaS founders selling offers between $3K–$50K. If your AOV is below $1K, we usually aren't the right fit.",
+    q: "How long until I'm actually placed and earning?",
+    a: "Most students are placed into a partner offer between weeks 7 and 9. Earnings start the moment you're on calls — commission is paid per close, not per month. Top students hit their first $10K month within 90 days.",
   },
   {
-    q: "What does the 90-day guarantee cover?",
-    a: "If a placed closer underperforms or leaves within 90 days, we replace them at no cost. We also retrain on your offer to make sure the next match is dialed.",
+    q: "What kind of offers do you place reps into?",
+    a: "Vetted high-ticket offers in coaching, B2B services, fitness, agencies, and SaaS — typically priced $3K–$50K. Every partner is screened for lead quality, fair commission splits, and supportive sales culture.",
   },
   {
-    q: "Do I need existing lead flow?",
-    a: "Yes. SCG places closers and builds sales infrastructure — we don't run paid ads. You'll need at least 50–100 qualified booked calls per month for placement to make sense.",
+    q: "How much does the program cost?",
+    a: "Pricing depends on the cohort and is discussed on the application call. We're not the cheapest — we're the most accountable. If you're price-shopping, this isn't your room.",
   },
   {
-    q: "What's the difference between Closer Placement and Fractional Sales Management?",
-    a: "Placement = a closer takes calls in your business. Fractional Sales Management = a senior leader runs your team, coaches reps, and builds your sales ops. Most clients use both.",
+    q: "How much time do I need to commit?",
+    a: "Plan on 15–20 hours/week minimum during training: live sessions, role plays, recorded reviews, and self-study. Once placed, it becomes your career — full-time hours and full-time income.",
+  },
+  {
+    q: "What happens if I don't get placed?",
+    a: "If you complete the curriculum, hit the milestones, and we don't place you into a partner offer, we keep coaching you until we do. We're invested in your outcome — not just your enrollment.",
   },
 ];
 

@@ -1,24 +1,24 @@
-const results = [
+const wins = [
   {
-    name: "Marcus T.",
-    role: "Coaching Offer — High Ticket",
+    name: "Jordan M.",
+    role: "Former bartender → Closer",
     quote:
-      "Placed two closers in 11 days. Did $214K in the first 30 days post-placement.",
-    metric: "$214K / 30 days",
+      "Quit my $48K job 60 days in. Did $14K in commission last month. SCG gave me a real career, not another course.",
+    metric: "$14K / month",
   },
   {
-    name: "Aria L.",
-    role: "Agency Owner",
+    name: "Sasha P.",
+    role: "Placed: high-ticket fitness offer",
     quote:
-      "Their fractional manager rebuilt our pipeline ops. Close rate jumped from 18% to 31%.",
-    metric: "18% → 31% close rate",
+      "I had zero sales experience. The training, the call reviews, the room — it's the only reason I'm closing today.",
+    metric: "First $10K month",
   },
   {
-    name: "Devon R.",
-    role: "B2B SaaS Founder",
+    name: "Devontae K.",
+    role: "Placed: B2B coaching program",
     quote:
-      "We were drowning in unqualified calls. SCG installed a closer + the systems to feed him. Game over.",
-    metric: "3.2x pipeline velocity",
+      "Other programs leave you with a PDF. SCG put me on real calls in week 8 and held my hand until I was dialed.",
+    metric: "Top 5 on leaderboard",
   },
 ];
 
@@ -29,31 +29,31 @@ export default function Results() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <span className="text-xs font-heading font-semibold tracking-[0.3em] uppercase text-silver">
-            Client Results
+            Student Wins
           </span>
           <h2 className="mt-4 text-4xl md:text-6xl font-heading font-bold text-silver">
-            Numbers That Speak Louder Than Pitches
+            Real People. Real Commissions.
           </h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {results.map((r) => (
+          {wins.map((w) => (
             <div
-              key={r.name}
+              key={w.name}
               className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8 hover:border-white/25 hover:scale-[1.01] transition-all duration-300"
             >
               <div className="text-xs font-heading uppercase tracking-[0.3em] text-accent">
-                {r.metric}
+                {w.metric}
               </div>
               <p className="mt-6 text-gray-200 leading-relaxed">
-                &ldquo;{r.quote}&rdquo;
+                &ldquo;{w.quote}&rdquo;
               </p>
               <div className="mt-8 pt-6 border-t border-white/10">
                 <div className="font-heading font-semibold text-white">
-                  {r.name}
+                  {w.name}
                 </div>
                 <div className="text-xs uppercase tracking-wider text-gray-500 mt-1">
-                  {r.role}
+                  {w.role}
                 </div>
               </div>
             </div>

@@ -1,11 +1,11 @@
 const stats = [
-  { value: "200+", label: "Closers Placed" },
-  { value: "14 Days", label: "Avg. Time-to-Hire" },
-  { value: "$48M+", label: "Client Revenue Closed" },
-  { value: "90 Day", label: "Replacement Guarantee" },
+  { value: "$10K+", label: "Avg Monthly Rep Earnings" },
+  { value: "200+", label: "Reps Placed" },
+  { value: "30+", label: "Partner Offers In Network" },
+  { value: "90 Days", label: "To Placement" },
 ];
 
-export default function TrustBar() {
+export default function StatsBar() {
   return (
     <section className="relative px-6 py-16 border-y border-white/10 bg-white/[0.02]">
       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">

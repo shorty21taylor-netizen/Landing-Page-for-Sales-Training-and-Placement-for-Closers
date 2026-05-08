@@ -1,10 +1,13 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import TrustBar from "@/components/TrustBar";
-import Offers from "@/components/Offers";
+import StatsBar from "@/components/StatsBar";
+import WhoThisIsFor from "@/components/WhoThisIsFor";
+import WhatYouGet from "@/components/WhatYouGet";
+import Transformation from "@/components/Transformation";
+import Curriculum from "@/components/Curriculum";
 import Results from "@/components/Results";
-import Process from "@/components/Process";
 import FAQ from "@/components/FAQ";
+import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 
 export default function Page() {
@@ -12,11 +15,14 @@ export default function Page() {
     <main className="relative">
       <Nav />
       <Hero />
-      <TrustBar />
-      <Offers />
+      <StatsBar />
+      <WhoThisIsFor />
+      <WhatYouGet />
+      <Transformation />
+      <Curriculum />
       <Results />
-      <Process />
       <FAQ />
+      <FinalCTA />
       <Footer />
     </main>
   );

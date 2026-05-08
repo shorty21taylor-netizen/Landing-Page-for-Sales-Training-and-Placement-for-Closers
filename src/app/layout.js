@@ -1,14 +1,14 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Summit Closing Group — Place Elite Closers In 14 Days",
+  title: "Summit Closing Group — Become An Elite Remote Closer In 90 Days",
   description:
-    "Done-for-you sales talent placement and fractional sales management. Backed by a 90-day replacement guarantee.",
+    "Get trained by 7-figure closers, placed into vetted high-ticket offers, and paid commission from day one. Apply to the elite closer program.",
   metadataBase: new URL("https://summitclosing.group"),
   openGraph: {
-    title: "Summit Closing Group",
+    title: "Summit Closing Group — Elite Closer Program",
     description:
-      "Place elite closers in your business in 14 days. Sales coaching + closer placement.",
+      "Become an elite remote closer in 90 days. Training, placement, mentorship, and a community of operators.",
     type: "website",
   },
 };

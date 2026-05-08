@@ -16,16 +16,18 @@ export default function Hero() {
         />
 
         <span className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-heading font-semibold tracking-[0.3em] uppercase px-4 py-1.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-md text-silver">
-          Place • Train • Scale
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+          Elite Closer Program • Now Enrolling
         </span>
 
         <h1 className="mt-6 text-4xl sm:text-5xl md:text-7xl font-heading font-bold leading-[1.05] tracking-tight max-w-5xl text-silver">
-          Place Elite Closers In Your Business In 14 Days
+          Become An Elite Remote Closer In 90 Days
         </h1>
 
         <p className="mt-6 text-base md:text-lg text-gray-400 max-w-2xl">
-          Done-for-you sales talent + fractional sales management. Backed by a
-          90-day replacement guarantee.
+          Get trained by 7-figure closers, placed into vetted high-ticket
+          offers, and paid commission from day one. No experience required —
+          just the grit to climb.
         </p>
 
         <div className="mt-12 w-full">
@@ -49,13 +51,13 @@ export default function Hero() {
             href="#apply"
             className="btn-shimmer text-black font-heading font-semibold px-8 py-4 rounded-full uppercase tracking-wider text-sm"
           >
-            Apply Now
+            Apply To Join
           </a>
           <a
             href="#results"
             className="border border-white/20 hover:border-white/40 transition-colors text-white font-heading font-semibold px-8 py-4 rounded-full uppercase tracking-wider text-sm"
           >
-            See Results
+            Watch Student Wins
           </a>
         </div>
       </div>
