@@ -1,59 +1,19 @@
 'use client';
 import Image from 'next/image';
-import GridBackground from './GridBackground';
-
-function MountainBackdrop() {
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* LEFT mountain photo — sharp, fully visible */}
-      <div className="absolute top-0 left-0 h-full w-1/2 md:w-2/5 opacity-100">
-        <img
-          src="/mountain-1.jpg"
-          alt=""
-          aria-hidden="true"
-          className="w-full h-full object-cover scale-110"
-        />
-      </div>
-
-      {/* RIGHT mountain photo — sharp, fully visible */}
-      <div className="absolute top-0 right-0 h-full w-1/2 md:w-2/5 opacity-100">
-        <img
-          src="/mountain-3.jpg"
-          alt=""
-          aria-hidden="true"
-          className="w-full h-full object-cover scale-110"
-        />
-      </div>
-
-      {/* CENTER mountain photo — lightly softened so the VSL floats clearly */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-3/4 w-3/4 md:w-1/2 opacity-90">
-        <img
-          src="/mountain-2.jpg"
-          alt=""
-          aria-hidden="true"
-          className="w-full h-full object-cover blur-sm scale-110"
-        />
-      </div>
-
-      {/* Targeted dark halo behind H1 / eyebrow / sub so the copy stays readable */}
-      <div className="absolute inset-x-0 top-[26%] h-[22%] bg-[radial-gradient(ellipse_55%_70%_at_center,rgba(0,0,0,0.6)_0%,transparent_75%)]" />
-
-      {/* Targeted dark halo behind the VSL frame */}
-      <div className="absolute inset-x-0 top-[50%] h-[38%] bg-[radial-gradient(ellipse_55%_60%_at_center,rgba(0,0,0,0.5)_0%,transparent_80%)]" />
-    </div>
-  );
-}
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-start px-6 pt-6 pb-24 text-center overflow-hidden">
-      {/* Full-width sharp mountain photo backdrop */}
-      <MountainBackdrop />
+      {/* SINGLE full-bleed mountain photo backdrop */}
+      <img
+        src="/mountain-1.jpg"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
 
-      {/* Subtle grid layer on top of mountains */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
-        <GridBackground />
-      </div>
+      {/* Soft black halo behind the headline block so white text stays readable */}
+      <div className="absolute inset-x-0 top-[24%] h-[24%] bg-[radial-gradient(ellipse_55%_70%_at_center,rgba(0,0,0,0.65)_0%,transparent_80%)] pointer-events-none" />
 
       <div className="relative z-10 w-full">
         {/* LOGO — inverted (black-on-white file → white-on-black) */}
@@ -84,7 +44,7 @@ export default function Hero() {
           Get trained by 7-figure closers, placed into vetted high-ticket offers, and paid commission from day one. No experience required — just the grit to climb.
         </p>
 
-        {/* VSL — clean glass frame floating above the sharp mountain scene */}
+        {/* VSL — clean glass frame floating above the mountain photo */}
         <div className="relative w-full max-w-4xl mx-auto aspect-video rounded-2xl overflow-hidden border border-white/20 bg-black/50 backdrop-blur-2xl shadow-[0_0_100px_-10px_rgba(255,255,255,0.25)] mt-12">
           {/* VSL EMBED — replace this div with <iframe ... /> */}
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-gray-300">
