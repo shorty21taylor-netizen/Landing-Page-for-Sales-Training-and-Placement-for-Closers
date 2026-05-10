@@ -22,9 +22,9 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#top" className="flex items-center">
           <img
-            src="/scg-logo-dark.png"
+            src="/scg-logo.png"
             alt="Summit Closing Group"
-            className="h-10 md:h-12 w-auto"
+            className="h-10 md:h-12 w-auto invert"
           />
         </a>
         <a

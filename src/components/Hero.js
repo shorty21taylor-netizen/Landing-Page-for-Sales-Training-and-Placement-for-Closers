@@ -9,46 +9,43 @@ function MountainBackdrop() {
       <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0a1628] to-[#0b1220]" />
 
       {/* LEFT mountain photo */}
-      <div className="absolute top-0 left-0 h-full w-1/2 md:w-2/5 opacity-[0.85]">
+      <div className="absolute top-0 left-0 h-full w-1/2 md:w-2/5 opacity-100">
         <img
           src="/mountain-1.jpg"
           alt=""
           aria-hidden="true"
-          className="w-full h-full object-cover blur-xl scale-110"
+          className="w-full h-full object-cover blur-md scale-110"
         />
       </div>
 
       {/* RIGHT mountain photo */}
-      <div className="absolute top-0 right-0 h-full w-1/2 md:w-2/5 opacity-[0.85]">
+      <div className="absolute top-0 right-0 h-full w-1/2 md:w-2/5 opacity-100">
         <img
           src="/mountain-3.jpg"
           alt=""
           aria-hidden="true"
-          className="w-full h-full object-cover blur-xl scale-110"
+          className="w-full h-full object-cover blur-md scale-110"
         />
       </div>
 
       {/* CENTER mountain photo — sits behind the VSL */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-3/4 w-3/4 md:w-1/2 opacity-70">
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-3/4 w-3/4 md:w-1/2 opacity-90">
         <img
           src="/mountain-2.jpg"
           alt=""
           aria-hidden="true"
-          className="w-full h-full object-cover blur-2xl scale-110"
+          className="w-full h-full object-cover blur-lg scale-110"
         />
       </div>
 
-      {/* Lighter vignette so peaks read through */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.15)_55%,rgba(0,0,0,0.65)_100%)]" />
+      {/* Minimal edge fades — just enough to keep peaks bleeding into black */}
+      <div className="absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-black/15 to-transparent" />
+      <div className="absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-black/15 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-1/6 bg-gradient-to-b from-black to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-1/6 bg-gradient-to-t from-black/40 to-transparent" />
 
-      {/* Softer edge fades */}
-      <div className="absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-black/80 via-black/30 to-transparent" />
-      <div className="absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-black/80 via-black/30 to-transparent" />
-      <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-black via-black/40 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-
-      {/* Lighter cool atmospheric tint */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a1628]/15 to-[#0a1628]/35 mix-blend-multiply" />
+      {/* Very light cool tint so it reads cohesive but not washed out */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a1628]/5 to-[#0a1628]/15 mix-blend-multiply" />
 
       {/* Subtle white horizon glow centered behind VSL */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[35%] bg-white/5 blur-3xl rounded-full" />
@@ -68,16 +65,16 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 w-full">
-        {/* LOGO */}
+        {/* LOGO — inverted for dark surface (black-on-white file becomes white-on-black) */}
         <div className="mt-8 md:mt-12 mb-10 md:mb-14">
           <Image
-            src="/scg-logo-dark.png"
+            src="/scg-logo.png"
             alt="Summit Closing Group"
             width={1536}
             height={1024}
             priority
             unoptimized
-            className="mx-auto w-[280px] md:w-[420px] lg:w-[520px] h-auto drop-shadow-[0_0_40px_rgba(255,255,255,0.2)]"
+            className="mx-auto w-[280px] md:w-[420px] lg:w-[520px] h-auto invert drop-shadow-[0_0_40px_rgba(255,255,255,0.2)]"
           />
         </div>
 
@@ -87,7 +84,7 @@ export default function Hero() {
         </div>
 
         {/* H1 */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-4xl mx-auto bg-gradient-to-br from-white via-gray-300 to-white bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-4xl mx-auto bg-gradient-to-br from-white via-gray-300 to-white bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
           Become An Elite Remote Closer In 90 Days
         </h1>
 

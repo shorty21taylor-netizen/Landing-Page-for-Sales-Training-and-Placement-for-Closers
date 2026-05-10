@@ -7,7 +7,6 @@ export const metadata = {
   metadataBase: new URL("https://summitclosing.group"),
   icons: {
     icon: "/favicon.ico",
-    apple: "/apple-icon.png",
   },
   openGraph: {
     title: "Summit Closing Group — Elite Closer Program",
