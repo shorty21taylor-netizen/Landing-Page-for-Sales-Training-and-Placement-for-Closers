@@ -16,7 +16,7 @@ export default function Hero() {
       <div className="absolute inset-x-0 top-[24%] h-[24%] bg-[radial-gradient(ellipse_55%_70%_at_center,rgba(0,0,0,0.65)_0%,transparent_80%)] pointer-events-none" />
 
       <div className="relative z-10 w-full">
-        {/* LOGO — inverted (black-on-white file → white-on-black) */}
+        {/* LOGO — transparent-bg black mark, forced to pure white for dark surface */}
         <div className="mt-8 md:mt-12 mb-10 md:mb-14">
           <Image
             src="/scg-logo.png"
@@ -25,7 +25,7 @@ export default function Hero() {
             height={1024}
             priority
             unoptimized
-            className="mx-auto w-[280px] md:w-[420px] lg:w-[520px] h-auto invert drop-shadow-[0_0_40px_rgba(255,255,255,0.2)]"
+            className="mx-auto w-[280px] md:w-[420px] lg:w-[520px] h-auto brightness-0 invert drop-shadow-[0_0_40px_rgba(255,255,255,0.25)]"
           />
         </div>
 
