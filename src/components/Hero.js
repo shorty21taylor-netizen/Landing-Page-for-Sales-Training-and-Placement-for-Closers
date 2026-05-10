@@ -71,10 +71,10 @@ export default function Hero() {
         {/* LOGO */}
         <div className="mt-8 md:mt-12 mb-10 md:mb-14">
           <Image
-            src="/scg-logo.png"
+            src="/scg-logo-dark.png"
             alt="Summit Closing Group"
-            width={520}
-            height={520}
+            width={1536}
+            height={1024}
             priority
             unoptimized
             className="mx-auto w-[280px] md:w-[420px] lg:w-[520px] h-auto drop-shadow-[0_0_40px_rgba(255,255,255,0.2)]"

@@ -20,15 +20,12 @@ export default function Nav() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-3">
+        <a href="#top" className="flex items-center">
           <img
-            src="/scg-logo.png"
+            src="/scg-logo-dark.png"
             alt="Summit Closing Group"
-            className="h-8 w-auto"
+            className="h-10 md:h-12 w-auto"
           />
-          <span className="hidden sm:inline font-heading text-sm tracking-[0.25em] uppercase text-silver">
-            Summit Closing Group
-          </span>
         </a>
         <a
           href="#apply"

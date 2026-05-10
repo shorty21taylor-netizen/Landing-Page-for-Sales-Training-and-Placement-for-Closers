@@ -5,11 +5,30 @@ export const metadata = {
   description:
     "Get trained by 7-figure closers, placed into vetted high-ticket offers, and paid commission from day one. Apply to the elite closer program.",
   metadataBase: new URL("https://summitclosing.group"),
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
   openGraph: {
     title: "Summit Closing Group — Elite Closer Program",
     description:
       "Become an elite remote closer in 90 days. Training, placement, mentorship, and a community of operators.",
     type: "website",
+    images: [
+      {
+        url: "/scg-logo.png",
+        width: 1536,
+        height: 1024,
+        alt: "Summit Closing Group",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Summit Closing Group — Elite Closer Program",
+    description:
+      "Become an elite remote closer in 90 days. Training, placement, mentorship, and a community of operators.",
+    images: ["/scg-logo.png"],
   },
 };
 
