@@ -5,63 +5,51 @@ import GridBackground from './GridBackground';
 function MountainBackdrop() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Sky gradient — full hero */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0a1628] to-[#1e293b]" />
+      {/* Base sky gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0a1628] to-[#0b1220]" />
 
-      {/* Atmospheric horizon glow — wide band across hero */}
-      <div className="absolute left-0 right-0 bottom-[30%] h-[40%] bg-gradient-to-t from-white/10 via-white/5 to-transparent blur-2xl" />
-
-      {/* Back mountain range — soft, distant, full width */}
-      <svg
-        className="absolute bottom-0 left-0 w-full h-[55%] opacity-40 blur-[2px]"
-        viewBox="0 0 1200 400"
-        preserveAspectRatio="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <polygon
-          fill="#334155"
-          points="0,400 150,180 300,260 450,140 600,220 750,160 900,240 1050,170 1200,250 1200,400"
+      {/* LEFT mountain photo — heavily blurred */}
+      <div className="absolute top-0 left-0 h-full w-1/2 md:w-2/5 opacity-60">
+        <img
+          src="/mountain-1.jpg"
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover blur-2xl scale-110"
         />
-      </svg>
+      </div>
 
-      {/* Mid mountain range — full width with snow caps */}
-      <svg
-        className="absolute bottom-0 left-0 w-full h-[50%] opacity-75"
-        viewBox="0 0 1200 400"
-        preserveAspectRatio="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <polygon
-          fill="#475569"
-          points="0,400 100,260 220,320 360,200 520,290 680,220 820,300 960,230 1100,290 1200,250 1200,400"
+      {/* RIGHT mountain photo — heavily blurred */}
+      <div className="absolute top-0 right-0 h-full w-1/2 md:w-2/5 opacity-60">
+        <img
+          src="/mountain-3.jpg"
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover blur-2xl scale-110"
         />
-        <polygon fill="#e2e8f0" points="340,220 360,200 380,225 370,235 350,232" />
-        <polygon fill="#e2e8f0" points="660,238 680,220 700,242 690,252 670,250" />
-        <polygon fill="#e2e8f0" points="940,248 960,230 980,252 970,262 950,260" />
-      </svg>
+      </div>
 
-      {/* Front mountain range — sharp peaks, bright snow caps, full width */}
-      <svg
-        className="absolute bottom-0 left-0 w-full h-[40%]"
-        viewBox="0 0 1200 400"
-        preserveAspectRatio="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <polygon
-          fill="#1e293b"
-          points="0,400 80,300 200,360 320,240 460,330 600,200 740,310 880,250 1020,340 1160,260 1200,310 1200,400"
+      {/* CENTER mountain photo — softer, sits behind the VSL */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-3/4 w-3/4 md:w-1/2 opacity-40">
+        <img
+          src="/mountain-2.jpg"
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover blur-3xl scale-110"
         />
-        <polygon fill="#ffffff" points="300,260 320,240 345,268 330,280 310,278" />
-        <polygon fill="#f8fafc" points="580,225 600,200 625,232 610,245 590,243" />
-        <polygon fill="#ffffff" points="720,332 740,310 762,338 750,350 730,348" />
-        <polygon fill="#f8fafc" points="1140,282 1160,260 1180,285 1170,295 1150,295" />
-      </svg>
+      </div>
 
-      {/* Bottom dark fade for depth */}
-      <div className="absolute bottom-0 left-0 w-full h-[20%] bg-gradient-to-t from-black/80 to-transparent" />
+      {/* Vignette + edge fades so photos blend into pure black at edges */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.4)_55%,rgba(0,0,0,0.95)_100%)]" />
+      <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-black via-black/70 to-transparent" />
+      <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-black via-black/70 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black via-black/60 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black via-black/70 to-transparent" />
 
-      {/* Top fade — keeps the logo area clean black */}
-      <div className="absolute top-0 left-0 w-full h-[15%] bg-gradient-to-b from-black to-transparent" />
+      {/* Cool atmospheric tint */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a1628]/30 to-[#0a1628]/60 mix-blend-multiply" />
+
+      {/* Subtle white horizon glow centered behind VSL */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[35%] bg-white/5 blur-3xl rounded-full" />
     </div>
   );
 }
@@ -69,16 +57,16 @@ function MountainBackdrop() {
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-start px-6 pt-6 pb-24 text-center overflow-hidden">
-      {/* Full-width mountain backdrop fills the entire hero */}
+      {/* Full-width mountain photo backdrop */}
       <MountainBackdrop />
 
       {/* Subtle grid layer on top of mountains */}
-      <div className="absolute inset-0 opacity-30 pointer-events-none">
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
         <GridBackground />
       </div>
 
       <div className="relative z-10 w-full">
-        {/* LOGO — big and bold at top */}
+        {/* LOGO */}
         <div className="mt-8 md:mt-12 mb-10 md:mb-14">
           <Image
             src="/scg-logo.png"
@@ -102,15 +90,15 @@ export default function Hero() {
         </h1>
 
         {/* Sub */}
-        <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mt-6">
+        <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mt-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
           Get trained by 7-figure closers, placed into vetted high-ticket offers, and paid commission from day one. No experience required — just the grit to climb.
         </p>
 
-        {/* VSL — clean glass frame, no inner mountain box */}
-        <div className="relative w-full max-w-4xl mx-auto aspect-video rounded-2xl overflow-hidden border border-white/15 bg-black/40 backdrop-blur-xl shadow-[0_0_80px_-10px_rgba(255,255,255,0.25)] mt-12">
+        {/* VSL — clean glass frame floating above the blurred mountain scene */}
+        <div className="relative w-full max-w-4xl mx-auto aspect-video rounded-2xl overflow-hidden border border-white/20 bg-black/50 backdrop-blur-2xl shadow-[0_0_100px_-10px_rgba(255,255,255,0.25)] mt-12">
           {/* VSL EMBED — replace this div with <iframe ... /> */}
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-gray-300">
-            <div className="w-16 h-16 rounded-full border border-white/30 flex items-center justify-center bg-black/30 backdrop-blur-sm">
+            <div className="w-16 h-16 rounded-full border border-white/30 flex items-center justify-center bg-black/40 backdrop-blur-sm">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
             </div>
             <span className="text-xs tracking-[0.3em] uppercase">VSL Embed Placeholder</span>
@@ -122,7 +110,7 @@ export default function Hero() {
           <button className="btn-shimmer text-black px-8 py-4 rounded-xl font-semibold">
             Apply To Join
           </button>
-          <button className="border border-white/20 text-white px-8 py-4 rounded-xl font-semibold hover:border-white/40 transition">
+          <button className="border border-white/20 text-white px-8 py-4 rounded-xl font-semibold hover:border-white/40 transition bg-black/30 backdrop-blur-sm">
             Watch Student Wins
           </button>
         </div>
