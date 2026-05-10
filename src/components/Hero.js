@@ -4,16 +4,16 @@ import GridBackground from './GridBackground';
 
 function MountainBackdrop() {
   return (
-    <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
-      {/* Sky gradient */}
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Sky gradient — full hero */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0a1628] to-[#1e293b]" />
 
-      {/* Atmospheric horizon glow behind VSL */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[40%] bg-white/10 blur-3xl rounded-full" />
+      {/* Atmospheric horizon glow — wide band across hero */}
+      <div className="absolute left-0 right-0 bottom-[30%] h-[40%] bg-gradient-to-t from-white/10 via-white/5 to-transparent blur-2xl" />
 
-      {/* Back mountain range — soft, distant */}
+      {/* Back mountain range — soft, distant, full width */}
       <svg
-        className="absolute bottom-0 left-0 w-full h-[60%] opacity-40 blur-[2px]"
+        className="absolute bottom-0 left-0 w-full h-[55%] opacity-40 blur-[2px]"
         viewBox="0 0 1200 400"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -24,9 +24,9 @@ function MountainBackdrop() {
         />
       </svg>
 
-      {/* Mid mountain range — with light snow caps */}
+      {/* Mid mountain range — full width with snow caps */}
       <svg
-        className="absolute bottom-0 left-0 w-full h-[55%] opacity-70"
+        className="absolute bottom-0 left-0 w-full h-[50%] opacity-75"
         viewBox="0 0 1200 400"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -35,24 +35,14 @@ function MountainBackdrop() {
           fill="#475569"
           points="0,400 100,260 220,320 360,200 520,290 680,220 820,300 960,230 1100,290 1200,250 1200,400"
         />
-        {/* Snow caps */}
-        <polygon
-          fill="#e2e8f0"
-          points="340,220 360,200 380,225 370,235 350,232"
-        />
-        <polygon
-          fill="#e2e8f0"
-          points="660,238 680,220 700,242 690,252 670,250"
-        />
-        <polygon
-          fill="#e2e8f0"
-          points="940,248 960,230 980,252 970,262 950,260"
-        />
+        <polygon fill="#e2e8f0" points="340,220 360,200 380,225 370,235 350,232" />
+        <polygon fill="#e2e8f0" points="660,238 680,220 700,242 690,252 670,250" />
+        <polygon fill="#e2e8f0" points="940,248 960,230 980,252 970,262 950,260" />
       </svg>
 
-      {/* Front mountain range — sharp peaks, bright snow caps */}
+      {/* Front mountain range — sharp peaks, bright snow caps, full width */}
       <svg
-        className="absolute bottom-0 left-0 w-full h-[45%]"
+        className="absolute bottom-0 left-0 w-full h-[40%]"
         viewBox="0 0 1200 400"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -61,30 +51,17 @@ function MountainBackdrop() {
           fill="#1e293b"
           points="0,400 80,300 200,360 320,240 460,330 600,200 740,310 880,250 1020,340 1160,260 1200,310 1200,400"
         />
-        {/* Bold snow caps echoing the logo */}
-        <polygon
-          fill="#ffffff"
-          points="300,260 320,240 345,268 330,280 310,278"
-        />
-        <polygon
-          fill="#f8fafc"
-          points="580,225 600,200 625,232 610,245 590,243"
-        />
-        <polygon
-          fill="#ffffff"
-          points="720,332 740,310 762,338 750,350 730,348"
-        />
-        <polygon
-          fill="#f8fafc"
-          points="1140,282 1160,260 1180,285 1170,295 1150,295"
-        />
+        <polygon fill="#ffffff" points="300,260 320,240 345,268 330,280 310,278" />
+        <polygon fill="#f8fafc" points="580,225 600,200 625,232 610,245 590,243" />
+        <polygon fill="#ffffff" points="720,332 740,310 762,338 750,350 730,348" />
+        <polygon fill="#f8fafc" points="1140,282 1160,260 1180,285 1170,295 1150,295" />
       </svg>
 
-      {/* Subtle drifting mist overlay */}
-      <div className="absolute bottom-0 left-0 w-full h-[40%] bg-gradient-to-t from-white/5 to-transparent animate-mist-drift" />
+      {/* Bottom dark fade for depth */}
+      <div className="absolute bottom-0 left-0 w-full h-[20%] bg-gradient-to-t from-black/80 to-transparent" />
 
-      {/* Top fade so it blends back into hero */}
-      <div className="absolute top-0 left-0 w-full h-[20%] bg-gradient-to-b from-black to-transparent" />
+      {/* Top fade — keeps the logo area clean black */}
+      <div className="absolute top-0 left-0 w-full h-[15%] bg-gradient-to-b from-black to-transparent" />
     </div>
   );
 }
@@ -92,9 +69,16 @@ function MountainBackdrop() {
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-start px-6 pt-6 pb-24 text-center overflow-hidden">
-      <GridBackground />
+      {/* Full-width mountain backdrop fills the entire hero */}
+      <MountainBackdrop />
+
+      {/* Subtle grid layer on top of mountains */}
+      <div className="absolute inset-0 opacity-30 pointer-events-none">
+        <GridBackground />
+      </div>
+
       <div className="relative z-10 w-full">
-        {/* LOGO */}
+        {/* LOGO — big and bold at top */}
         <div className="mt-8 md:mt-12 mb-10 md:mb-14">
           <Image
             src="/scg-logo.png"
@@ -102,7 +86,8 @@ export default function Hero() {
             width={520}
             height={520}
             priority
-            className="mx-auto w-[280px] md:w-[420px] lg:w-[520px] h-auto drop-shadow-[0_0_40px_rgba(255,255,255,0.15)]"
+            unoptimized
+            className="mx-auto w-[280px] md:w-[420px] lg:w-[520px] h-auto drop-shadow-[0_0_40px_rgba(255,255,255,0.2)]"
           />
         </div>
 
@@ -121,17 +106,14 @@ export default function Hero() {
           Get trained by 7-figure closers, placed into vetted high-ticket offers, and paid commission from day one. No experience required — just the grit to climb.
         </p>
 
-        {/* VSL with mountain backdrop */}
-        <div className="relative max-w-5xl mx-auto mt-12 p-8 md:p-14 rounded-3xl overflow-hidden">
-          <MountainBackdrop />
-          <div className="relative z-10 w-full max-w-4xl mx-auto aspect-video rounded-2xl overflow-hidden border border-white/15 bg-white/5 backdrop-blur-xl shadow-[0_0_80px_-10px_rgba(255,255,255,0.25)]">
-            {/* VSL EMBED — replace this div with <iframe ... /> */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-gray-300">
-              <div className="w-16 h-16 rounded-full border border-white/30 flex items-center justify-center bg-black/30 backdrop-blur-sm">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-              </div>
-              <span className="text-xs tracking-[0.3em] uppercase">VSL Embed Placeholder</span>
+        {/* VSL — clean glass frame, no inner mountain box */}
+        <div className="relative w-full max-w-4xl mx-auto aspect-video rounded-2xl overflow-hidden border border-white/15 bg-black/40 backdrop-blur-xl shadow-[0_0_80px_-10px_rgba(255,255,255,0.25)] mt-12">
+          {/* VSL EMBED — replace this div with <iframe ... /> */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-gray-300">
+            <div className="w-16 h-16 rounded-full border border-white/30 flex items-center justify-center bg-black/30 backdrop-blur-sm">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
             </div>
+            <span className="text-xs tracking-[0.3em] uppercase">VSL Embed Placeholder</span>
           </div>
         </div>
 
