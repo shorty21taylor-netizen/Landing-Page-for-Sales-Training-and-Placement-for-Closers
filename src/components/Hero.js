@@ -8,45 +8,47 @@ function MountainBackdrop() {
       {/* Base sky gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0a1628] to-[#0b1220]" />
 
-      {/* LEFT mountain photo — heavily blurred */}
-      <div className="absolute top-0 left-0 h-full w-1/2 md:w-2/5 opacity-60">
+      {/* LEFT mountain photo */}
+      <div className="absolute top-0 left-0 h-full w-1/2 md:w-2/5 opacity-[0.85]">
         <img
           src="/mountain-1.jpg"
           alt=""
           aria-hidden="true"
-          className="w-full h-full object-cover blur-2xl scale-110"
+          className="w-full h-full object-cover blur-xl scale-110"
         />
       </div>
 
-      {/* RIGHT mountain photo — heavily blurred */}
-      <div className="absolute top-0 right-0 h-full w-1/2 md:w-2/5 opacity-60">
+      {/* RIGHT mountain photo */}
+      <div className="absolute top-0 right-0 h-full w-1/2 md:w-2/5 opacity-[0.85]">
         <img
           src="/mountain-3.jpg"
           alt=""
           aria-hidden="true"
-          className="w-full h-full object-cover blur-2xl scale-110"
+          className="w-full h-full object-cover blur-xl scale-110"
         />
       </div>
 
-      {/* CENTER mountain photo — softer, sits behind the VSL */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-3/4 w-3/4 md:w-1/2 opacity-40">
+      {/* CENTER mountain photo — sits behind the VSL */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-3/4 w-3/4 md:w-1/2 opacity-70">
         <img
           src="/mountain-2.jpg"
           alt=""
           aria-hidden="true"
-          className="w-full h-full object-cover blur-3xl scale-110"
+          className="w-full h-full object-cover blur-2xl scale-110"
         />
       </div>
 
-      {/* Vignette + edge fades so photos blend into pure black at edges */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.4)_55%,rgba(0,0,0,0.95)_100%)]" />
-      <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-black via-black/70 to-transparent" />
-      <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-black via-black/70 to-transparent" />
-      <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black via-black/60 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black via-black/70 to-transparent" />
+      {/* Lighter vignette so peaks read through */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.15)_55%,rgba(0,0,0,0.65)_100%)]" />
 
-      {/* Cool atmospheric tint */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a1628]/30 to-[#0a1628]/60 mix-blend-multiply" />
+      {/* Softer edge fades */}
+      <div className="absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-black/80 via-black/30 to-transparent" />
+      <div className="absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-black/80 via-black/30 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-black via-black/40 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+      {/* Lighter cool atmospheric tint */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a1628]/15 to-[#0a1628]/35 mix-blend-multiply" />
 
       {/* Subtle white horizon glow centered behind VSL */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[35%] bg-white/5 blur-3xl rounded-full" />
@@ -85,12 +87,12 @@ export default function Hero() {
         </div>
 
         {/* H1 */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-4xl mx-auto bg-gradient-to-br from-white via-gray-300 to-white bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-4xl mx-auto bg-gradient-to-br from-white via-gray-300 to-white bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
           Become An Elite Remote Closer In 90 Days
         </h1>
 
         {/* Sub */}
-        <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mt-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+        <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mt-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
           Get trained by 7-figure closers, placed into vetted high-ticket offers, and paid commission from day one. No experience required — just the grit to climb.
         </p>
 
