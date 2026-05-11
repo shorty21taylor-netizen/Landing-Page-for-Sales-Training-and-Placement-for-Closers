@@ -5,7 +5,7 @@ export default function Footer() {
         <img
           src="/scg-logo.png"
           alt="Summit Closing Group"
-          className="h-9 w-auto brightness-0 invert opacity-80"
+          className="h-9 w-auto opacity-80"
         />
         <p className="text-xs text-gray-500">
           © {new Date().getFullYear()} Summit Closing Group. All rights

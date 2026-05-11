@@ -24,7 +24,7 @@ export default function Nav() {
           <img
             src="/scg-logo.png"
             alt="Summit Closing Group"
-            className="h-10 md:h-12 w-auto brightness-0 invert"
+            className="h-10 md:h-12 w-auto"
           />
         </a>
         <a
