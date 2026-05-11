@@ -10,6 +10,7 @@ const EXPERIENCE_OPTIONS = [
 ];
 
 const MIN_WHY = 50;
+const DEFAULT_BOOKING_URL = 'https://calendar.app.google/HybDWoE9eW1NSJfTA';
 
 export default function ApplyPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -22,9 +23,7 @@ export default function ApplyPage() {
     why: '',
   });
 
-  const bookingUrl =
-    process.env.NEXT_PUBLIC_BOOKING_URL ||
-    'https://calendar.app.google/PLACEHOLDER_REPLACE_ME';
+  const bookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL || DEFAULT_BOOKING_URL;
 
   const update = (field) => (e) =>
     setForm((f) => ({ ...f, [field]: e.target.value }));
@@ -212,7 +211,7 @@ export default function ApplyPage() {
             </form>
           </>
         ) : (
-          <div className="rounded-2xl border border-white/15 bg-white/[0.03] backdrop-blur-xl p-6 md:p-10 text-center">
+          <div className="rounded-2xl border border-white/15 bg-white/[0.03] backdrop-blur-xl p-8 md:p-12 text-center shadow-[0_0_60px_-15px_rgba(96,165,250,0.3)]">
             <div className="mx-auto w-14 h-14 rounded-full border border-accent flex items-center justify-center mb-6">
               <svg
                 width="22"
@@ -229,18 +228,41 @@ export default function ApplyPage() {
             <h2 className="text-2xl md:text-3xl font-heading font-bold text-silver">
               Got it. Pick a time below for your discovery call.
             </h2>
-            <p className="mt-3 text-gray-400 text-sm md:text-base">
-              Choose a slot that works for you. We’ll send a calendar invite
-              once it’s locked in.
+            <p className="mt-3 text-gray-400 text-sm md:text-base max-w-md mx-auto">
+              Google Calendar opens in a new tab so you can grab a slot. We’ll
+              send the invite once it’s locked in.
             </p>
 
-            <div className="mt-10 rounded-2xl overflow-hidden border border-white/15 bg-black/40 backdrop-blur-xl shadow-[0_0_60px_-15px_rgba(96,165,250,0.3)]">
-              <iframe
-                src={bookingUrl}
-                width="100%"
-                style={{ minHeight: '700px', border: 0, display: 'block' }}
-                title="Schedule discovery call"
-              />
+            {/* Google Calendar booking pages send X-Frame-Options: SAMEORIGIN,
+                so an iframe embed is blocked. We use a primary button + tab
+                fallback instead. */}
+            <div className="mt-10 flex flex-col items-center gap-4">
+              <a
+                href={bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-shimmer inline-flex items-center justify-center gap-2 text-black font-heading font-semibold px-10 py-4 rounded-xl uppercase tracking-wider text-sm"
+              >
+                Open booking page
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                >
+                  <path d="M14 3h7v7" />
+                  <path d="M10 14L21 3" />
+                  <path d="M21 14v7H3V3h7" />
+                </svg>
+              </a>
+              <a
+                href={bookingUrl}
+                className="text-xs uppercase tracking-[0.25em] text-gray-500 hover:text-white transition-colors"
+              >
+                or open in current tab
+              </a>
             </div>
           </div>
         )}
