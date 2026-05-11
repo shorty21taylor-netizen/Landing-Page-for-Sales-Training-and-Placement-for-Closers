@@ -16,19 +16,21 @@ export default function Hero() {
       <div className="absolute inset-x-0 top-[24%] h-[24%] bg-[radial-gradient(ellipse_55%_70%_at_center,rgba(0,0,0,0.65)_0%,transparent_80%)] pointer-events-none" />
 
       <div className="relative z-10 w-full">
-        {/* LOGO — black mark on a soft white pill so it reads against the photo */}
-        <div className="mt-8 md:mt-12 mb-10 md:mb-14 flex justify-center">
-          <div className="inline-flex bg-white/85 backdrop-blur-sm rounded-2xl px-6 py-3 shadow-[0_0_40px_-10px_rgba(255,255,255,0.4)]">
-            <Image
-              src="/scg-logo.png"
-              alt="Summit Closing Group"
-              width={1536}
-              height={1024}
-              priority
-              unoptimized
-              className="w-[260px] md:w-[400px] lg:w-[500px] h-auto"
-            />
-          </div>
+        {/* LOGO — bare black mark with stacked drop-shadow halo */}
+        <div className="mt-8 md:mt-12 mb-10 md:mb-14">
+          <Image
+            src="/scg-logo.png"
+            alt="Summit Closing Group"
+            width={1536}
+            height={1024}
+            priority
+            unoptimized
+            className="mx-auto w-[260px] md:w-[400px] lg:w-[500px] h-auto"
+            style={{
+              filter:
+                'drop-shadow(0 0 16px rgba(255,255,255,0.7)) drop-shadow(0 0 32px rgba(255,255,255,0.45)) drop-shadow(0 0 48px rgba(255,255,255,0.25))',
+            }}
+          />
         </div>
 
         {/* Eyebrow */}
