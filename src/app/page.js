@@ -1,11 +1,12 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import StatsBar from "@/components/StatsBar";
-import WhoThisIsFor from "@/components/WhoThisIsFor";
-import WhatYouGet from "@/components/WhatYouGet";
-import Transformation from "@/components/Transformation";
+import ProblemAgitation from "@/components/ProblemAgitation";
+import Pillars from "@/components/Pillars";
+import StudentWins from "@/components/StudentWins";
 import Curriculum from "@/components/Curriculum";
-import Results from "@/components/Results";
+import Founder from "@/components/Founder";
+import WhoThisIsFor from "@/components/WhoThisIsFor";
+import Guarantee from "@/components/Guarantee";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
@@ -15,12 +16,13 @@ export default function Page() {
     <main className="relative">
       <Nav />
       <Hero />
-      <StatsBar />
-      <WhoThisIsFor />
-      <WhatYouGet />
-      <Transformation />
+      <ProblemAgitation />
+      <Pillars />
+      <StudentWins />
       <Curriculum />
-      <Results />
+      <Founder />
+      <WhoThisIsFor />
+      <Guarantee />
       <FAQ />
       <FinalCTA />
       <Footer />

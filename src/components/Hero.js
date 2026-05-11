@@ -3,7 +3,7 @@
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-start px-6 pt-6 pb-24 text-center overflow-hidden">
-      {/* SINGLE full-bleed mountain photo backdrop */}
+      {/* Full-bleed mountain photo backdrop */}
       <img
         src="/mountain-1.jpg"
         alt=""
@@ -15,7 +15,7 @@ export default function Hero() {
       <div className="absolute inset-x-0 top-[24%] h-[24%] bg-[radial-gradient(ellipse_55%_70%_at_center,rgba(0,0,0,0.65)_0%,transparent_80%)] pointer-events-none" />
 
       <div className="relative z-10 w-full">
-        {/* LOGO — vector SVG with tightened white halo */}
+        {/* LOGO */}
         <div className="mt-8 md:mt-12 mb-10 md:mb-14 flex justify-center">
           <img
             src="/scg-logo.svg"
@@ -30,17 +30,17 @@ export default function Hero() {
 
         {/* Eyebrow */}
         <div className="inline-block border border-white/15 rounded-full px-4 py-1.5 text-xs tracking-[0.25em] uppercase bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent mb-6">
-          Elite Closer Program • Now Enrolling
+          Elite Closer Program • Now Accepting Applications
         </div>
 
         {/* H1 */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-4xl mx-auto bg-gradient-to-br from-white via-gray-300 to-white bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
-          Become An Elite Remote Closer In 90 Days
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-5xl mx-auto bg-gradient-to-br from-white via-gray-300 to-white bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+          Become a $10K/Month Remote Closer in 90 Days — Or You Don’t Pay.
         </h1>
 
         {/* Sub */}
-        <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mt-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-          Get trained by 7-figure closers, placed into vetted high-ticket offers, and paid commission from day one. No experience required — just the grit to climb.
+        <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mt-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+          Get trained by 7-figure closers, placed into vetted high-ticket offers, and earning commission from week one. We don’t teach theory — we hand you the playbook, the partners, and the calls.
         </p>
 
         {/* VSL */}
@@ -62,11 +62,20 @@ export default function Hero() {
             Apply To Join
           </a>
           <a
-            href="#results"
+            href="#student-wins"
             className="border border-white/20 text-white px-8 py-4 rounded-xl font-semibold hover:border-white/40 transition bg-black/30 backdrop-blur-sm inline-flex items-center justify-center"
           >
-            Watch Student Wins
+            See Real Student Results
           </a>
+        </div>
+
+        {/* Proof bar */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs md:text-sm text-gray-200 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+          <span>250+ closers placed</span>
+          <span className="text-gray-500" aria-hidden="true">·</span>
+          <span>$2.4M+ in student commissions in 2025</span>
+          <span className="text-gray-500" aria-hidden="true">·</span>
+          <span>4.9★ avg rating</span>
         </div>
       </div>
     </section>

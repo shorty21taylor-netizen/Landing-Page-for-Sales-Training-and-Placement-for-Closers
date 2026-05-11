@@ -3,28 +3,36 @@ import { useState } from "react";
 
 const faqs = [
   {
-    q: "Do I need any sales experience to apply?",
-    a: "No. Most of our top performers had zero sales experience when they started. We've placed bartenders, college students, ex-military, and corporate burnouts. What we screen for is coachability, work ethic, and clear communication.",
-  },
-  {
-    q: "How long until I'm actually placed and earning?",
-    a: "Most students are placed into a partner offer between weeks 7 and 9. Earnings start the moment you're on calls — commission is paid per close, not per month. Top students hit their first $10K month within 90 days.",
-  },
-  {
-    q: "What kind of offers do you place reps into?",
-    a: "Vetted high-ticket offers in coaching, B2B services, fitness, agencies, and SaaS — typically priced $3K–$50K. Every partner is screened for lead quality, fair commission splits, and supportive sales culture.",
+    q: "Do I need sales experience to apply?",
+    a: "No. About half of our placed closers came in with zero sales experience. What matters is communication ability and willingness to do the work. We teach the rest from scratch.",
   },
   {
     q: "How much does the program cost?",
-    a: "Pricing depends on the cohort and is discussed on the application call. We're not the cheapest — we're the most accountable. If you're price-shopping, this isn't your room.",
+    a: "Pricing is shared on the discovery call after you apply. The right answer depends on your situation — we make sure Summit is actually a fit before quoting numbers.",
   },
   {
-    q: "How much time do I need to commit?",
-    a: "Plan on 15–20 hours/week minimum during training: live sessions, role plays, recorded reviews, and self-study. Once placed, it becomes your career — full-time hours and full-time income.",
+    q: "How fast can I get placed?",
+    a: "Most students are on real sales calls within 30 days. Active commission usually starts in week 4–6. Consistent closer income is typically 60–90 days for committed students.",
   },
   {
-    q: "What happens if I don't get placed?",
-    a: "If you complete the curriculum, hit the milestones, and we don't place you into a partner offer, we keep coaching you until we do. We're invested in your outcome — not just your enrollment.",
+    q: "What’s the time commitment?",
+    a: "10–15 hours per week during training, then full-time hours once you’re placed. Closing becomes your job at that point. This is a real career path, not passive income.",
+  },
+  {
+    q: "How is this different from other closer programs?",
+    a: "Most programs are training only. They teach you to close, then send you off to find your own offer — where most people get stuck. We train AND place. You’re never on your own.",
+  },
+  {
+    q: "What if it doesn’t work for me?",
+    a: "Complete the program, show up to coaching, hit your activity benchmarks. If you’re not generating closer income within 90 days of finishing, we refund every penny. Risk is on us.",
+  },
+  {
+    q: "What kind of offers will I close?",
+    a: "High-ticket coaching, consulting, agency services, and SaaS — typically $3k–$25k offer prices. Commissions usually run 8–15% per close, paid weekly.",
+  },
+  {
+    q: "How does payment work — 1099 or W2?",
+    a: "1099 contractor with each partner. You’re effectively running your own closing business — we set you up with partners and the playbook, you set your own hours and income ceiling.",
   },
 ];
 
@@ -38,7 +46,7 @@ export default function FAQ() {
             FAQ
           </span>
           <h2 className="mt-4 text-4xl md:text-6xl font-heading font-bold text-silver">
-            Questions, Answered
+            Common Questions.
           </h2>
         </div>
 

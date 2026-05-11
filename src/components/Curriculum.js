@@ -35,7 +35,7 @@ export default function Curriculum() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <span className="text-xs font-heading font-semibold tracking-[0.3em] uppercase text-silver">
-            The Curriculum
+            What You’ll Actually Learn
           </span>
           <h2 className="mt-4 text-4xl md:text-6xl font-heading font-bold text-silver">
             The Climb, In Four Phases
@@ -46,7 +46,7 @@ export default function Curriculum() {
         </div>
 
         <div className="relative grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {phases.map((p, i) => (
+          {phases.map((p) => (
             <div
               key={p.num}
               className="relative rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8 hover:border-white/25 hover:scale-[1.01] transition-all duration-300"
