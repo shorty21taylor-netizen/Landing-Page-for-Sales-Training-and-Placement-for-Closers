@@ -6,10 +6,10 @@ const VIDEO_TESTIMONIALS = [
   {
     name: 'Yen',
     src: '/yen-testimonial.mp4',
-    headline: '$4,900 in commissions in his first 4 days',
+    headline: '$5,600 in commissions in his first 4 days',
     quote:
       '“Instantly placed and started taking sales calls just 2 days after joining. The system actually works — I’m proof.”',
-    stat: '$4,900 · First 4 days',
+    stat: '$5,600 · First 4 days',
   },
   {
     name: 'Cayden',
