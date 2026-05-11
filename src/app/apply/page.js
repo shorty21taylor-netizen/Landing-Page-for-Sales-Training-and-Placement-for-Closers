@@ -159,8 +159,8 @@ export default function ApplyPage() {
                 Tell us about you.
               </h1>
               <p className="mt-4 text-gray-400 text-sm md:text-base">
-                Quick qualifier — 5 questions, ~2 min. We’ll get back within
-                24h if you’re a fit.
+                Quick qualifier — 5 questions, ~2 min. Then book your
+                discovery call.
               </p>
             </div>
 
