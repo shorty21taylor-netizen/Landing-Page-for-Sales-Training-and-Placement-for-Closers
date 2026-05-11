@@ -15,7 +15,7 @@ export default function Hero() {
       <div className="absolute inset-x-0 top-[24%] h-[24%] bg-[radial-gradient(ellipse_55%_70%_at_center,rgba(0,0,0,0.65)_0%,transparent_80%)] pointer-events-none" />
 
       <div className="relative z-10 w-full">
-        {/* LOGO — bare transparent PNG, 2x size, strong stacked white halo */}
+        {/* LOGO — bare transparent PNG, bolder strokes (4x black thickeners) + strong white halo */}
         <div className="mt-8 md:mt-12 mb-10 md:mb-14 flex justify-center">
           <img
             src="/scg-logo.png"
@@ -23,7 +23,7 @@ export default function Hero() {
             className="w-[480px] md:w-[560px] lg:w-[640px] h-auto"
             style={{
               filter:
-                'drop-shadow(0 0 20px rgba(255,255,255,0.95)) drop-shadow(0 0 40px rgba(255,255,255,0.8)) drop-shadow(0 0 80px rgba(255,255,255,0.6)) drop-shadow(0 0 120px rgba(255,255,255,0.35))',
+                'drop-shadow(0 0 1.5px rgba(0,0,0,1)) drop-shadow(0 0 1.5px rgba(0,0,0,1)) drop-shadow(0 0 1.5px rgba(0,0,0,1)) drop-shadow(0 0 1.5px rgba(0,0,0,1)) drop-shadow(0 0 24px rgba(255,255,255,1)) drop-shadow(0 0 56px rgba(255,255,255,0.85)) drop-shadow(0 0 100px rgba(255,255,255,0.65)) drop-shadow(0 0 160px rgba(255,255,255,0.4))',
             }}
           />
         </div>
