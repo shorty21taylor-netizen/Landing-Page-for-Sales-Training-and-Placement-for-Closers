@@ -1,17 +1,28 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 
-// 5 placeholder testimonials — Marcus T. was replaced by Yen's real video card above.
-const TESTIMONIALS = [
+// Real video testimonials — rendered before the placeholder grid items.
+const VIDEO_TESTIMONIALS = [
   {
-    name: 'Jasmine R.',
-    initials: 'JR',
-    color: 'bg-rose-500',
-    headline: 'Quit my corporate job 60 days after starting',
+    name: 'Yen',
+    src: '/yen-testimonial.mp4',
+    headline: '$4,900 in commissions in his first 4 days',
     quote:
-      '“The placement is what changed everything. I didn’t have to find an offer or beg for a chance to close. By month two I had enough commission coming in to walk away from my desk.”',
-    stat: 'Quit at month 2',
+      '“Instantly placed and started taking sales calls just 2 days after joining. The system actually works — I’m proof.”',
+    stat: '$4,900 · First 4 days',
   },
+  {
+    name: 'Cayden',
+    src: '/cayden-testimonial.mp4',
+    headline: '$80,000 cash collected on outbound in his first month',
+    quote:
+      '“$8,000 in commissions in my pocket month one. The system, the offers, the coaching — it all just works.”',
+    stat: '$80K collected · $8K commission · Month 1',
+  },
+];
+
+// 4 placeholder testimonials — Anthony will swap as more real ones come in.
+const TESTIMONIALS = [
   {
     name: 'Devon K.',
     initials: 'DK',
@@ -50,6 +61,43 @@ const TESTIMONIALS = [
   },
 ];
 
+function VideoTestimonialCard({ name, src, headline, quote, stat }) {
+  return (
+    <div className="rounded-2xl border border-white/15 bg-white/[0.03] backdrop-blur-xl overflow-hidden hover:border-white/30 transition-all duration-300 flex flex-col shadow-[0_0_50px_-15px_rgba(96,165,250,0.5)]">
+      <div className="relative bg-black h-[400px] md:h-[480px] flex items-center justify-center overflow-hidden">
+        <video
+          src={src}
+          controls
+          preload="metadata"
+          playsInline
+          className="w-full h-full object-contain"
+        />
+        {/* Verified badge — floating, click-through */}
+        <div className="pointer-events-none absolute top-3 left-3 flex items-center gap-1.5 text-[10px] font-heading tracking-[0.25em] uppercase text-white bg-black/70 backdrop-blur-sm border border-accent/40 rounded-full px-2.5 py-1">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" className="text-accent">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+          <span>Verified · Real Student</span>
+        </div>
+      </div>
+      <div className="p-6 md:p-7 flex flex-col flex-1">
+        <div className="font-heading font-semibold text-white text-sm mb-3">
+          {name}
+        </div>
+        <div className="text-white font-heading font-semibold text-base leading-snug mb-3">
+          {headline}
+        </div>
+        <p className="text-sm text-gray-400 leading-relaxed flex-1">
+          {quote}
+        </p>
+        <div className="mt-5 pt-4 border-t border-white/10 text-xs font-heading uppercase tracking-[0.25em] text-accent">
+          {stat}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 async function getWinsImages() {
   try {
     const dir = path.join(process.cwd(), 'public', 'wins');
@@ -84,41 +132,12 @@ export default async function StudentWins() {
 
         {/* Testimonial grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Yen — real video testimonial */}
-          <div className="rounded-2xl border border-white/15 bg-white/[0.03] backdrop-blur-xl overflow-hidden hover:border-white/30 transition-all duration-300 flex flex-col shadow-[0_0_50px_-15px_rgba(96,165,250,0.5)]">
-            <div className="relative bg-black h-[400px] md:h-[480px] flex items-center justify-center overflow-hidden">
-              <video
-                src="/yen-testimonial.mp4"
-                controls
-                preload="metadata"
-                playsInline
-                className="w-full h-full object-contain"
-              />
-              {/* Verified badge — floating, click-through */}
-              <div className="pointer-events-none absolute top-3 left-3 flex items-center gap-1.5 text-[10px] font-heading tracking-[0.25em] uppercase text-white bg-black/70 backdrop-blur-sm border border-accent/40 rounded-full px-2.5 py-1">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" className="text-accent">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span>Verified · Real Student</span>
-              </div>
-            </div>
-            <div className="p-6 md:p-7 flex flex-col flex-1">
-              <div className="font-heading font-semibold text-white text-sm mb-3">
-                Yen
-              </div>
-              <div className="text-white font-heading font-semibold text-base leading-snug mb-3">
-                $4,900 in commissions in his first 4 days
-              </div>
-              <p className="text-sm text-gray-400 leading-relaxed flex-1">
-                &ldquo;Instantly placed and started taking sales calls just 2 days after joining. The system actually works — I&rsquo;m proof.&rdquo;
-              </p>
-              <div className="mt-5 pt-4 border-t border-white/10 text-xs font-heading uppercase tracking-[0.25em] text-accent">
-                $4,900 · First 4 days
-              </div>
-            </div>
-          </div>
+          {/* Real video testimonials */}
+          {VIDEO_TESTIMONIALS.map((v) => (
+            <VideoTestimonialCard key={v.name} {...v} />
+          ))}
 
-          {/* Placeholder testimonials — Anthony will swap as more real ones come in */}
+          {/* Placeholder text testimonials — Anthony will swap as more real ones come in */}
           {TESTIMONIALS.map((t) => (
             <div
               key={t.name}
