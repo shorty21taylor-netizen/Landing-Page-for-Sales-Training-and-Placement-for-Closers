@@ -15,15 +15,15 @@ export default function Hero() {
       <div className="absolute inset-x-0 top-[24%] h-[24%] bg-[radial-gradient(ellipse_55%_70%_at_center,rgba(0,0,0,0.65)_0%,transparent_80%)] pointer-events-none" />
 
       <div className="relative z-10 w-full">
-        {/* LOGO — bare transparent PNG, bolder strokes (4x black thickeners) + strong white halo */}
+        {/* LOGO — sharp transparent PNG with tightened white glow */}
         <div className="mt-8 md:mt-12 mb-10 md:mb-14 flex justify-center">
           <img
             src="/scg-logo.png"
             alt="Summit Closing Group"
-            className="w-[480px] md:w-[560px] lg:w-[640px] h-auto"
+            className="w-[480px] md:w-[560px] lg:w-[640px] h-auto select-none [image-rendering:-webkit-optimize-contrast]"
             style={{
               filter:
-                'drop-shadow(0 0 1.5px rgba(0,0,0,1)) drop-shadow(0 0 1.5px rgba(0,0,0,1)) drop-shadow(0 0 1.5px rgba(0,0,0,1)) drop-shadow(0 0 1.5px rgba(0,0,0,1)) drop-shadow(0 0 24px rgba(255,255,255,1)) drop-shadow(0 0 56px rgba(255,255,255,0.85)) drop-shadow(0 0 100px rgba(255,255,255,0.65)) drop-shadow(0 0 160px rgba(255,255,255,0.4))',
+                'contrast(1.05) drop-shadow(0 0 12px rgba(255,255,255,0.9)) drop-shadow(0 0 32px rgba(255,255,255,0.65)) drop-shadow(0 0 64px rgba(255,255,255,0.4)) drop-shadow(0 0 120px rgba(255,255,255,0.25))',
             }}
           />
         </div>
