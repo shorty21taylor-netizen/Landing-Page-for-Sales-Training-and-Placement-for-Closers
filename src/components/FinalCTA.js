@@ -20,10 +20,10 @@ export default function FinalCTA() {
           Next Cohort Closes Soon
         </span>
         <h2 className="mt-4 text-4xl md:text-6xl font-heading font-bold text-silver leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
-          Ready to Become a Closer?
+          Ready to Build a 6-Figure Sales Career?
         </h2>
         <p className="mt-6 text-gray-200 max-w-xl mx-auto text-base md:text-lg drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
-          We accept a limited number of new closers each month to keep placement quality high. Apply now to lock your spot in the next cohort.
+          We accept a limited number of new closers each month. Apply now to lock your spot in the next cohort — and start your 12-month path to six figures.
         </p>
         <a
           href="/apply"

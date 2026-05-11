@@ -15,10 +15,10 @@ export default function Guarantee() {
             Our Promise
           </span>
           <h2 className="mt-4 text-3xl md:text-5xl font-heading font-bold text-silver leading-tight">
-            Do the Work, Get Results — Or Your Money Back.
+            A 6-Figure Sales Career in 12 Months — Or Your Money Back.
           </h2>
           <p className="mt-8 text-gray-300 leading-relaxed max-w-2xl mx-auto text-base md:text-lg">
-            Complete every module. Show up to every coaching call. Hit your activity benchmarks. Do the work — and if you’re not generating closer income within 90 days of completing the program, we refund every penny. That’s how confident we are in this system.
+            Complete every module. Show up to every coaching call. Hit your activity benchmarks. Do the work — and if you’re not on pace for $100K+ in your first 12 months, we refund every penny. That’s how confident we are in this system.
           </p>
           <div className="mt-10 inline-block text-xs font-heading uppercase tracking-[0.3em] text-gray-500 border border-white/10 rounded-full px-5 py-2 bg-black/30">
             No fine print. No catch. Just do the work.

@@ -1,7 +1,7 @@
 const forYou = [
   "You’re hungry to build real income, not chase another shiny object",
   "You can hold a conversation and want to actually talk to people",
-  "You’re willing to put in 10–15 hours a week for the next 90 days",
+  "You’re willing to put in 10–15 hours a week during active training",
   "You’re done with “make money online” gurus and want a real vehicle",
 ];
 

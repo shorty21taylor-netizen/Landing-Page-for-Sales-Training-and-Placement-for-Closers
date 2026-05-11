@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     q: "How fast can I get placed?",
-    a: "Most students are on real sales calls within 30 days. Active commission usually starts in week 4–6. Consistent closer income is typically 60–90 days for committed students.",
+    a: "Most students are on real sales calls within 30 days. Active commission usually starts in week 4–6. The 6-figure run rate is what we guarantee within your first 12 months — most committed students hit it sooner.",
   },
   {
     q: "What’s the time commitment?",
@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: "What if it doesn’t work for me?",
-    a: "Complete the program, show up to coaching, hit your activity benchmarks. If you’re not generating closer income within 90 days of finishing, we refund every penny. Risk is on us.",
+    a: "Complete the program, show up to coaching, hit your activity benchmarks. If you’re not on pace for $100K+ in your first 12 months, we refund every penny. The risk is on us, not you.",
   },
   {
     q: "What kind of offers will I close?",

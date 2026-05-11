@@ -35,12 +35,12 @@ export default function Hero() {
 
         {/* H1 */}
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-5xl mx-auto bg-gradient-to-br from-white via-gray-300 to-white bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
-          Become a $10K/Month Remote Closer in 90 Days — Or You Don’t Pay.
+          Build a 6-Figure Sales Career in 12 Months — Guaranteed.
         </h1>
 
         {/* Sub */}
         <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mt-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-          Get trained by 7-figure closers, placed into vetted high-ticket offers, and earning commission from week one. We don’t teach theory — we hand you the playbook, the partners, and the calls.
+          Get trained by 7-figure closers, placed into vetted high-ticket offers, and on a clear path to $100K+ in your first year. We don’t teach theory — we hand you the playbook, the partners, and the calls.
         </p>
 
         {/* VSL */}

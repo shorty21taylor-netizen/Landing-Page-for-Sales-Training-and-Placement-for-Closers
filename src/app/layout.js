@@ -1,17 +1,18 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Summit Closing Group — Become An Elite Remote Closer In 90 Days",
+  title:
+    "Summit Closing Group — Build a 6-Figure Sales Career in 12 Months",
   description:
-    "Get trained by 7-figure closers, placed into vetted high-ticket offers, and paid commission from day one. Apply to the elite closer program.",
+    "Get trained by 7-figure closers, placed into vetted high-ticket offers, and on a clear path to $100K+ in your first year. Apply to Summit Closing Group.",
   metadataBase: new URL("https://summitclosing.group"),
   icons: {
     icon: "/favicon.ico",
   },
   openGraph: {
-    title: "Summit Closing Group — Elite Closer Program",
+    title: "Summit Closing Group — 6-Figure Sales Career in 12 Months",
     description:
-      "Become an elite remote closer in 90 days. Training, placement, mentorship, and a community of operators.",
+      "Training, placement, and a 12-month path to $100K+. Guaranteed.",
     type: "website",
     images: [
       {
@@ -24,9 +25,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Summit Closing Group — Elite Closer Program",
+    title: "Summit Closing Group — 6-Figure Sales Career in 12 Months",
     description:
-      "Become an elite remote closer in 90 days. Training, placement, mentorship, and a community of operators.",
+      "Training, placement, and a 12-month path to $100K+. Guaranteed.",
     images: ["/scg-logo.png"],
   },
 };
