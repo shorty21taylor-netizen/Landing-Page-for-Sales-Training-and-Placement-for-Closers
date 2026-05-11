@@ -8,3 +8,5 @@ dist/
 .DS_Store
 *.log
 .vercel
+# locally collected applications (real CRM integration TBD)
+/data/

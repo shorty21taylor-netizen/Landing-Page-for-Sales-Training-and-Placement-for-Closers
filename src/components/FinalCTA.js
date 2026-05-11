@@ -1,7 +1,7 @@
 export default function FinalCTA() {
   return (
     <section
-      id="apply"
+      id="final-cta"
       className="relative px-6 py-24 md:py-40 overflow-hidden"
     >
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(96,165,250,0.10)_0%,transparent_70%)]" />
@@ -30,7 +30,7 @@ export default function FinalCTA() {
           an elite closer, apply now.
         </p>
         <a
-          href="#"
+          href="/apply"
           className="btn-shimmer mt-10 inline-block text-black font-heading font-semibold px-10 py-4 rounded-full uppercase tracking-wider text-sm"
         >
           Apply To Join SCG

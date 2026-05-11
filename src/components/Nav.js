@@ -20,7 +20,7 @@ export default function Nav() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#top" className="flex items-center">
+        <a href="/" className="flex items-center">
           <img
             src="/scg-logo.png"
             alt="Summit Closing Group"
@@ -28,7 +28,7 @@ export default function Nav() {
           />
         </a>
         <a
-          href="#apply"
+          href="/apply"
           className="btn-shimmer text-black font-heading font-semibold text-sm px-5 py-2.5 rounded-full uppercase tracking-wider"
         >
           Apply
