@@ -15,15 +15,15 @@ export default function Hero() {
       <div className="absolute inset-x-0 top-[24%] h-[24%] bg-[radial-gradient(ellipse_55%_70%_at_center,rgba(0,0,0,0.65)_0%,transparent_80%)] pointer-events-none" />
 
       <div className="relative z-10 w-full">
-        {/* LOGO — bare transparent PNG, 1.5x size, white halo via stacked drop-shadow */}
+        {/* LOGO — bare transparent PNG, 2x size, strong stacked white halo */}
         <div className="mt-8 md:mt-12 mb-10 md:mb-14 flex justify-center">
           <img
             src="/scg-logo.png"
             alt="Summit Closing Group"
-            className="w-[390px] md:w-[600px] lg:w-[750px] h-auto"
+            className="w-[480px] md:w-[560px] lg:w-[640px] h-auto"
             style={{
               filter:
-                'drop-shadow(0 0 16px rgba(255,255,255,0.7)) drop-shadow(0 0 32px rgba(255,255,255,0.45)) drop-shadow(0 0 48px rgba(255,255,255,0.25))',
+                'drop-shadow(0 0 20px rgba(255,255,255,0.95)) drop-shadow(0 0 40px rgba(255,255,255,0.8)) drop-shadow(0 0 80px rgba(255,255,255,0.6)) drop-shadow(0 0 120px rgba(255,255,255,0.35))',
             }}
           />
         </div>
