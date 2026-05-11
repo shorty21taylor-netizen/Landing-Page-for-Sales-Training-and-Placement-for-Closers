@@ -3,48 +3,108 @@ import { useState } from 'react';
 
 const EXPERIENCE_OPTIONS = [
   'No experience yet',
-  '< 1 year',
-  '1–3 years',
-  '3–5 years',
+  'Less than 1 year',
+  '1-3 years',
+  '3-5 years',
   '5+ years',
 ];
 
-const MIN_WHY = 50;
+const MIN_NAME = 2;
+const MIN_WHY = 80;
+const MAX_WHY = 600;
 const DEFAULT_BOOKING_URL = 'https://calendar.app.google/HybDWoE9eW1NSJfTA';
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function validateField(field, value) {
+  const v = (value ?? '').toString();
+  switch (field) {
+    case 'name': {
+      const trimmed = v.trim();
+      if (!trimmed) return 'Please enter your full name.';
+      if (trimmed.length < MIN_NAME)
+        return `Name must be at least ${MIN_NAME} characters.`;
+      return null;
+    }
+    case 'email': {
+      const trimmed = v.trim();
+      if (!trimmed) return 'Please enter your email.';
+      if (!EMAIL_RE.test(trimmed)) return 'That email doesn’t look right.';
+      return null;
+    }
+    case 'phone': {
+      const trimmed = v.trim();
+      if (!trimmed) return 'Please enter your phone number.';
+      const digits = trimmed.replace(/\D/g, '');
+      if (digits.length < 7) return 'That phone number looks too short.';
+      return null;
+    }
+    case 'experience':
+      if (!v) return 'Please select your experience level.';
+      return null;
+    case 'why': {
+      const len = v.trim().length;
+      if (len === 0) return 'Please tell us why.';
+      if (len < MIN_WHY) return `Minimum ${MIN_WHY} characters.`;
+      if (len > MAX_WHY) return `Max ${MAX_WHY} characters.`;
+      return null;
+    }
+    default:
+      return null;
+  }
+}
+
+function computeErrors(form) {
+  return {
+    name: validateField('name', form.name),
+    email: validateField('email', form.email),
+    phone: validateField('phone', form.phone),
+    experience: validateField('experience', form.experience),
+    why: validateField('why', form.why),
+  };
+}
 
 export default function ApplyPage() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState(null);
+  const [submitError, setSubmitError] = useState(null);
   const [form, setForm] = useState({
     name: '',
     email: '',
+    phone: '',
     experience: '',
     why: '',
   });
+  const [touched, setTouched] = useState({});
+  const [forceShow, setForceShow] = useState(false);
 
   const bookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL || DEFAULT_BOOKING_URL;
 
+  const errors = computeErrors(form);
+  const valid = Object.values(errors).every((e) => !e);
+
   const update = (field) => (e) =>
     setForm((f) => ({ ...f, [field]: e.target.value }));
+  const onBlur = (field) => () =>
+    setTouched((t) => ({ ...t, [field]: true }));
+  const showErr = (field) => (touched[field] || forceShow) && errors[field];
 
-  const validate = () => {
-    if (!form.name.trim()) return 'Please enter your full name.';
-    if (!form.email.trim()) return 'Please enter your email.';
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      return 'That email doesn’t look right.';
-    if (!form.experience) return 'Please select your sales experience.';
-    if (form.why.trim().length < MIN_WHY)
-      return `Tell us a bit more — minimum ${MIN_WHY} characters.`;
-    return null;
-  };
+  const whyLen = form.why.trim().length;
+  const counterText =
+    whyLen < MIN_WHY
+      ? `${whyLen} / ${MIN_WHY} minimum`
+      : `${whyLen} / ${MAX_WHY} max`;
+  const counterClass =
+    whyLen < MIN_WHY
+      ? 'text-gray-500'
+      : whyLen > MAX_WHY
+      ? 'text-red-300'
+      : 'text-accent';
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    setError(null);
-    const err = validate();
-    if (err) {
-      setError(err);
+    setSubmitError(null);
+    if (!valid) {
+      setForceShow(true);
       return;
     }
     setSubmitting(true);
@@ -60,19 +120,26 @@ export default function ApplyPage() {
       }
       setSubmitted(true);
     } catch (e) {
-      setError(e.message || 'Something went wrong. Try again.');
+      setSubmitError(e.message || 'Something went wrong. Try again.');
     } finally {
       setSubmitting(false);
     }
   };
 
+  const inputBase =
+    'w-full bg-black/40 border rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:ring-1 transition-colors';
+  const inputOk =
+    'border-white/10 focus:border-accent focus:ring-accent/50';
+  const inputBad =
+    'border-red-500/60 focus:border-red-400 focus:ring-red-400/40';
+  const inputCls = (field) =>
+    `${inputBase} ${showErr(field) ? inputBad : inputOk}`;
+
   return (
     <main className="relative min-h-screen bg-black text-white">
-      {/* subtle accent glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(96,165,250,0.08)_0%,transparent_60%)] pointer-events-none" />
 
       <div className="relative z-10 max-w-2xl mx-auto px-6 pt-16 md:pt-24 pb-24">
-        {/* Brand / back */}
         <div className="mb-10 text-center">
           <a
             href="/"
@@ -92,8 +159,8 @@ export default function ApplyPage() {
                 Tell us about you.
               </h1>
               <p className="mt-4 text-gray-400 text-sm md:text-base">
-                Quick qualifier — takes ~2 min. We’ll get back within 24h if
-                you’re a fit.
+                Quick qualifier — 5 questions, ~2 min. We’ll get back within
+                24h if you’re a fit.
               </p>
             </div>
 
@@ -102,44 +169,91 @@ export default function ApplyPage() {
               className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-6 md:p-10 space-y-6"
               noValidate
             >
-              {/* Name */}
+              {/* 1. Full Name */}
               <div>
-                <label className="block text-xs font-heading uppercase tracking-[0.25em] text-gray-400 mb-2">
+                <label
+                  htmlFor="name"
+                  className="block text-xs font-heading uppercase tracking-[0.25em] text-gray-400 mb-2"
+                >
                   Full Name
                 </label>
                 <input
+                  id="name"
                   type="text"
                   value={form.name}
                   onChange={update('name')}
+                  onBlur={onBlur('name')}
                   required
+                  minLength={MIN_NAME}
                   autoComplete="name"
-                  className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/50 transition-colors"
-                  placeholder="Jane Doe"
+                  className={inputCls('name')}
+                  placeholder="First and last"
                 />
+                {showErr('name') && (
+                  <p className="mt-2 text-xs text-red-300">{errors.name}</p>
+                )}
               </div>
 
-              {/* Email */}
+              {/* 2. Email */}
               <div>
-                <label className="block text-xs font-heading uppercase tracking-[0.25em] text-gray-400 mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-xs font-heading uppercase tracking-[0.25em] text-gray-400 mb-2"
+                >
                   Email
                 </label>
                 <input
+                  id="email"
                   type="email"
                   value={form.email}
                   onChange={update('email')}
+                  onBlur={onBlur('email')}
                   required
                   autoComplete="email"
-                  className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/50 transition-colors"
-                  placeholder="you@example.com"
+                  className={inputCls('email')}
+                  placeholder="you@email.com"
                 />
+                {showErr('email') && (
+                  <p className="mt-2 text-xs text-red-300">{errors.email}</p>
+                )}
               </div>
 
-              {/* Experience */}
+              {/* 3. Phone */}
               <div>
-                <label className="block text-xs font-heading uppercase tracking-[0.25em] text-gray-400 mb-3">
-                  Sales Experience
+                <label
+                  htmlFor="phone"
+                  className="block text-xs font-heading uppercase tracking-[0.25em] text-gray-400 mb-2"
+                >
+                  Phone
                 </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <input
+                  id="phone"
+                  type="tel"
+                  value={form.phone}
+                  onChange={update('phone')}
+                  onBlur={onBlur('phone')}
+                  required
+                  autoComplete="tel"
+                  className={inputCls('phone')}
+                  placeholder="+1 (555) 555-5555"
+                />
+                <p className="mt-2 text-xs text-gray-500">
+                  We may text you a reminder before your call.
+                </p>
+                {showErr('phone') && (
+                  <p className="mt-1 text-xs text-red-300">{errors.phone}</p>
+                )}
+              </div>
+
+              {/* 4. Experience */}
+              <div>
+                <span className="block text-xs font-heading uppercase tracking-[0.25em] text-gray-400 mb-3">
+                  How much sales or communication experience do you have?
+                </span>
+                <div
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-2"
+                  onBlur={onBlur('experience')}
+                >
                   {EXPERIENCE_OPTIONS.map((opt) => {
                     const checked = form.experience === opt;
                     return (
@@ -156,7 +270,10 @@ export default function ApplyPage() {
                           name="experience"
                           value={opt}
                           checked={checked}
-                          onChange={update('experience')}
+                          onChange={(e) => {
+                            update('experience')(e);
+                            setTouched((t) => ({ ...t, experience: true }));
+                          }}
                           className="sr-only"
                         />
                         <span
@@ -171,40 +288,58 @@ export default function ApplyPage() {
                     );
                   })}
                 </div>
+                {showErr('experience') && (
+                  <p className="mt-2 text-xs text-red-300">
+                    {errors.experience}
+                  </p>
+                )}
               </div>
 
-              {/* Why */}
+              {/* 5. Why */}
               <div>
-                <label className="block text-xs font-heading uppercase tracking-[0.25em] text-gray-400 mb-2">
-                  Why do you want this?
+                <label
+                  htmlFor="why"
+                  className="block text-xs font-heading uppercase tracking-[0.25em] text-gray-400 mb-2"
+                >
+                  Why do you want to become a closer? Why now?
                 </label>
                 <textarea
+                  id="why"
                   value={form.why}
                   onChange={update('why')}
-                  rows={5}
+                  onBlur={onBlur('why')}
+                  rows={6}
                   required
                   minLength={MIN_WHY}
-                  className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/50 transition-colors resize-none"
-                  placeholder="Tell us what's driving you to become a closer right now..."
+                  maxLength={MAX_WHY}
+                  className={`${inputCls('why')} resize-none`}
+                  placeholder="Be honest. What's driving this decision right now? What's not working in your current situation?"
                 />
-                <div className="mt-1 text-right text-xs text-gray-600">
-                  {form.why.trim().length}/{MIN_WHY} min
+                <div className="mt-1 flex items-center justify-between gap-3">
+                  {showErr('why') ? (
+                    <p className="text-xs text-red-300">{errors.why}</p>
+                  ) : (
+                    <span />
+                  )}
+                  <span className={`text-xs ${counterClass}`}>
+                    {counterText}
+                  </span>
                 </div>
               </div>
 
-              {error && (
+              {submitError && (
                 <div
                   role="alert"
                   className="text-sm text-red-300 bg-red-500/10 border border-red-500/30 rounded-lg px-4 py-3"
                 >
-                  {error}
+                  {submitError}
                 </div>
               )}
 
               <button
                 type="submit"
-                disabled={submitting}
-                className="btn-shimmer w-full text-black font-heading font-semibold px-8 py-4 rounded-xl uppercase tracking-wider text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={!valid || submitting}
+                className="btn-shimmer w-full text-black font-heading font-semibold px-8 py-4 rounded-xl uppercase tracking-wider text-sm disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 {submitting ? 'Submitting…' : 'Submit Application'}
               </button>
@@ -233,9 +368,6 @@ export default function ApplyPage() {
               send the invite once it’s locked in.
             </p>
 
-            {/* Google Calendar booking pages send X-Frame-Options: SAMEORIGIN,
-                so an iframe embed is blocked. We use a primary button + tab
-                fallback instead. */}
             <div className="mt-10 flex flex-col items-center gap-4">
               <a
                 href={bookingUrl}

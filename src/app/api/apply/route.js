@@ -4,29 +4,40 @@ import path from 'path';
 
 export const runtime = 'nodejs';
 
-const MIN_WHY = 50;
+const MIN_NAME = 2;
+const MIN_WHY = 80;
+const MAX_WHY = 600;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const EXPERIENCE_OPTIONS = new Set([
   'No experience yet',
-  '< 1 year',
-  '1–3 years',
-  '3–5 years',
+  'Less than 1 year',
+  '1-3 years',
+  '3-5 years',
   '5+ years',
 ]);
 
 function validate(data) {
   if (typeof data !== 'object' || data === null) return 'Bad payload.';
-  const { name, email, experience, why } = data;
-  if (!name || typeof name !== 'string' || !name.trim()) return 'Missing name.';
+  const { name, email, phone, experience, why } = data;
+
+  if (!name || typeof name !== 'string' || name.trim().length < MIN_NAME)
+    return 'Invalid name.';
   if (
     !email ||
     typeof email !== 'string' ||
-    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    !EMAIL_RE.test(email.trim())
   )
     return 'Invalid email.';
+  if (!phone || typeof phone !== 'string') return 'Missing phone.';
+  const digits = phone.replace(/\D/g, '');
+  if (digits.length < 7) return 'Invalid phone.';
   if (!experience || !EXPERIENCE_OPTIONS.has(experience))
     return 'Invalid experience selection.';
-  if (!why || typeof why !== 'string' || why.trim().length < MIN_WHY)
-    return `Why field must be at least ${MIN_WHY} characters.`;
+  if (!why || typeof why !== 'string') return 'Missing why.';
+  const whyLen = why.trim().length;
+  if (whyLen < MIN_WHY) return `Why field must be at least ${MIN_WHY} characters.`;
+  if (whyLen > MAX_WHY) return `Why field must be at most ${MAX_WHY} characters.`;
+
   return null;
 }
 
@@ -44,6 +55,7 @@ export async function POST(req) {
   const record = {
     name: data.name.trim(),
     email: data.email.trim().toLowerCase(),
+    phone: data.phone.trim(),
     experience: data.experience,
     why: data.why.trim(),
     submittedAt: new Date().toISOString(),
