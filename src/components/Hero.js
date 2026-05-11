@@ -1,5 +1,4 @@
 'use client';
-import Image from 'next/image';
 
 export default function Hero() {
   return (
@@ -16,16 +15,12 @@ export default function Hero() {
       <div className="absolute inset-x-0 top-[24%] h-[24%] bg-[radial-gradient(ellipse_55%_70%_at_center,rgba(0,0,0,0.65)_0%,transparent_80%)] pointer-events-none" />
 
       <div className="relative z-10 w-full">
-        {/* LOGO — bare black mark with stacked drop-shadow halo */}
-        <div className="mt-8 md:mt-12 mb-10 md:mb-14">
-          <Image
+        {/* LOGO — bare transparent PNG, 1.5x size, white halo via stacked drop-shadow */}
+        <div className="mt-8 md:mt-12 mb-10 md:mb-14 flex justify-center">
+          <img
             src="/scg-logo.png"
             alt="Summit Closing Group"
-            width={1536}
-            height={1024}
-            priority
-            unoptimized
-            className="mx-auto w-[260px] md:w-[400px] lg:w-[500px] h-auto"
+            className="w-[390px] md:w-[600px] lg:w-[750px] h-auto"
             style={{
               filter:
                 'drop-shadow(0 0 16px rgba(255,255,255,0.7)) drop-shadow(0 0 32px rgba(255,255,255,0.45)) drop-shadow(0 0 48px rgba(255,255,255,0.25))',
