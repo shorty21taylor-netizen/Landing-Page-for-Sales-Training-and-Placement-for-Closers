@@ -31,12 +31,15 @@ export default function VideoTestimonialCard({
             aria-label={`Play ${name}'s video testimonial`}
             className="group absolute inset-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/60 focus:ring-inset"
           >
+            {/* object-contain so the poster letterboxes the same way the
+                <video> will once it mounts — no visual jump on click,
+                works for both vertical and horizontal source videos. */}
             <img
               src={poster}
               alt={`${name} — video testimonial preview`}
               loading="lazy"
               decoding="async"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
             <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
             <div className="absolute inset-0 flex items-center justify-center">

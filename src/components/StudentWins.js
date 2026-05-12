@@ -2,8 +2,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import VideoTestimonialCard from './VideoTestimonialCard';
 
-// Real video testimonials — click-to-load. Posters render instantly,
-// the actual <video> only mounts when a visitor taps a card.
+// All 6 slots are now real video testimonials — no placeholders left.
 const VIDEO_TESTIMONIALS = [
   {
     name: 'Yen',
@@ -50,18 +49,14 @@ const VIDEO_TESTIMONIALS = [
       '“I came in brand new to high ticket sales. Two weeks in I’d already done $5,000 in commissions, pacing $10,000/month — the system actually delivers what it promises.”',
     stat: '$5,000 commission · 2 weeks · Pacing $10K/mo',
   },
-];
-
-// Remaining placeholder testimonial — Anthony will swap as more real ones come in.
-const TESTIMONIALS = [
   {
-    name: 'Aisha P.',
-    initials: 'AP',
-    color: 'bg-cyan-500',
-    headline: 'Single mom, working from home, $11k last month',
+    name: 'Adeel',
+    src: '/adeel-testimonial.mp4',
+    poster: '/adeel-poster.jpg',
+    headline: '17 years old. New to high ticket. $5K in commission month 1.',
     quote:
-      '“As a single mom the location freedom was non-negotiable. Summit gave me a real career I can run from my kitchen table. Last month I cleared $11k in commissions.”',
-    stat: '$11k last month',
+      '“I’m only 17 and I had zero high ticket sales experience. Summit placed me in my first month and I did $72,000 in cash collected as a setter — $5,000 in commission straight to me.”',
+    stat: '$72K cash collected · $5K commission · Age 17 · Month 1',
   },
 ];
 
@@ -92,44 +87,15 @@ export default async function StudentWins() {
           <h2 className="mt-4 text-4xl md:text-6xl font-heading font-bold text-silver">
             250+ Closers Placed. $2.4M+ in Commissions Paid Out.
           </h2>
-          <p className="mt-6 text-gray-400 max-w-2xl mx-auto">
-            Real students. Real numbers. Real placements.
+          <p className="mt-6 text-gray-400 max-w-3xl mx-auto">
+            From age 17 to career-switchers, beginners to insurance veterans — every student here is real, named, and on the record.
           </p>
         </div>
 
-        {/* Testimonial grid */}
+        {/* Testimonial grid — 6 real video testimonials, click-to-load */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Real video testimonials (click-to-load) */}
           {VIDEO_TESTIMONIALS.map((v) => (
             <VideoTestimonialCard key={v.name} {...v} />
-          ))}
-
-          {/* Placeholder text testimonials — Anthony will swap as more real ones come in */}
-          {TESTIMONIALS.map((t) => (
-            <div
-              key={t.name}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-6 md:p-7 hover:border-white/25 transition-all duration-300 flex flex-col"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div
-                  className={`w-11 h-11 rounded-full ${t.color} flex items-center justify-center font-heading font-bold text-white text-sm`}
-                >
-                  {t.initials}
-                </div>
-                <div className="font-heading font-semibold text-white text-sm">
-                  {t.name}
-                </div>
-              </div>
-              <div className="text-white font-heading font-semibold text-base leading-snug mb-3">
-                {t.headline}
-              </div>
-              <p className="text-sm text-gray-400 leading-relaxed flex-1">
-                {t.quote}
-              </p>
-              <div className="mt-5 pt-4 border-t border-white/10 text-xs font-heading uppercase tracking-[0.25em] text-accent">
-                {t.stat}
-              </div>
-            </div>
           ))}
         </div>
 
