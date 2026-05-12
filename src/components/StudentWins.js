@@ -67,8 +67,14 @@ export default function StudentWins() {
           <span className="text-xs font-heading font-semibold tracking-[0.3em] uppercase text-silver">
             Student Wins
           </span>
-          <h2 className="mt-4 text-4xl md:text-6xl font-heading font-bold text-silver">
-            250+ Closers Placed. $2.4M+ in Commissions Paid Out.
+          <h2
+            className="mt-4 text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold text-silver leading-tight"
+            style={{
+              filter:
+                'drop-shadow(0 0 24px rgba(255,255,255,0.45)) drop-shadow(0 0 56px rgba(255,255,255,0.25)) drop-shadow(0 0 120px rgba(255,255,255,0.15))',
+            }}
+          >
+            150 Closers Placed This Year. $2M+ in Commissions Paid Out.
           </h2>
           <p className="mt-6 text-gray-400 max-w-3xl mx-auto">
             From age 17 to career-switchers, beginners to insurance veterans — every student here is real, named, and on the record.
