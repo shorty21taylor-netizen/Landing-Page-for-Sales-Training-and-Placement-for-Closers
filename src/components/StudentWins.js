@@ -1,13 +1,14 @@
 import { promises as fs } from 'fs';
 import path from 'path';
+import VideoTestimonialCard from './VideoTestimonialCard';
 
-// Real video testimonials — rendered before the placeholder grid items.
-// First 2 use preload="metadata" so they fetch the playable manifest eagerly;
-// the rest use preload="none" so they cost zero bytes until a visitor hits play.
+// Real video testimonials — click-to-load. Posters render instantly,
+// the actual <video> only mounts when a visitor taps a card.
 const VIDEO_TESTIMONIALS = [
   {
     name: 'Yen',
     src: '/yen-testimonial.mp4',
+    poster: '/yen-poster.jpg',
     headline: '$5,600 in commissions in his first 4 days',
     quote:
       '“Instantly placed and started taking sales calls just 2 days after joining. The system actually works — I’m proof.”',
@@ -16,6 +17,7 @@ const VIDEO_TESTIMONIALS = [
   {
     name: 'Cayden',
     src: '/cayden-testimonial.mp4',
+    poster: '/cayden-poster.jpg',
     headline: '$80,000 cash collected on outbound in his first month',
     quote:
       '“$8,000 in commissions in my pocket month one. The system, the offers, the coaching — it all just works.”',
@@ -24,6 +26,7 @@ const VIDEO_TESTIMONIALS = [
   {
     name: 'Ayah',
     src: '/ayah-testimonial.mp4',
+    poster: '/ayah-poster.jpg',
     headline: 'Brand new to high ticket. $15K in commissions her first month.',
     quote:
       '“I had zero high ticket sales experience before joining Summit. One month in I’d already done $15,000 in commissions — the training and the offers actually deliver.”',
@@ -32,6 +35,7 @@ const VIDEO_TESTIMONIALS = [
   {
     name: 'Jarissa',
     src: '/jarissa-testimonial.mp4',
+    poster: '/jarissa-poster.jpg',
     headline: 'Left life insurance. $3,300 in 3 days. Zero cold calls.',
     quote:
       '“I was scared to leave my book of business behind in life insurance. With Summit I did $3,300 in commissions in 3 days — all inbound, no paid leads, no cold calling.”',
@@ -40,6 +44,7 @@ const VIDEO_TESTIMONIALS = [
   {
     name: 'Ray',
     src: '/ray-testimonial.mp4',
+    poster: '/ray-poster.jpg',
     headline: 'New to high ticket. $5,000 in 2 weeks. Pacing $10K/month.',
     quote:
       '“I came in brand new to high ticket sales. Two weeks in I’d already done $5,000 in commissions, pacing $10,000/month — the system actually delivers what it promises.”',
@@ -59,43 +64,6 @@ const TESTIMONIALS = [
     stat: '$11k last month',
   },
 ];
-
-function VideoTestimonialCard({ name, src, headline, quote, stat, preload }) {
-  return (
-    <div className="rounded-2xl border border-white/15 bg-white/[0.03] backdrop-blur-xl overflow-hidden hover:border-white/30 transition-all duration-300 flex flex-col shadow-[0_0_50px_-15px_rgba(96,165,250,0.5)]">
-      <div className="relative bg-black h-[400px] md:h-[480px] flex items-center justify-center overflow-hidden">
-        <video
-          src={src}
-          controls
-          preload={preload}
-          playsInline
-          className="w-full h-full object-contain"
-        />
-        {/* Verified badge — floating, click-through */}
-        <div className="pointer-events-none absolute top-3 left-3 flex items-center gap-1.5 text-[10px] font-heading tracking-[0.25em] uppercase text-white bg-black/70 backdrop-blur-sm border border-accent/40 rounded-full px-2.5 py-1">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" className="text-accent">
-            <polyline points="20 6 9 17 4 12" />
-          </svg>
-          <span>Verified · Real Student</span>
-        </div>
-      </div>
-      <div className="p-6 md:p-7 flex flex-col flex-1">
-        <div className="font-heading font-semibold text-white text-sm mb-3">
-          {name}
-        </div>
-        <div className="text-white font-heading font-semibold text-base leading-snug mb-3">
-          {headline}
-        </div>
-        <p className="text-sm text-gray-400 leading-relaxed flex-1">
-          {quote}
-        </p>
-        <div className="mt-5 pt-4 border-t border-white/10 text-xs font-heading uppercase tracking-[0.25em] text-accent">
-          {stat}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 async function getWinsImages() {
   try {
@@ -131,13 +99,9 @@ export default async function StudentWins() {
 
         {/* Testimonial grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Real video testimonials — first 2 preload metadata, rest stay idle until clicked */}
-          {VIDEO_TESTIMONIALS.map((v, i) => (
-            <VideoTestimonialCard
-              key={v.name}
-              {...v}
-              preload={i < 2 ? 'metadata' : 'none'}
-            />
+          {/* Real video testimonials (click-to-load) */}
+          {VIDEO_TESTIMONIALS.map((v) => (
+            <VideoTestimonialCard key={v.name} {...v} />
           ))}
 
           {/* Placeholder text testimonials — Anthony will swap as more real ones come in */}
