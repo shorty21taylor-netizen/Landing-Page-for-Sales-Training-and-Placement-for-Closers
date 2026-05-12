@@ -19,19 +19,18 @@ const VIDEO_TESTIMONIALS = [
       '“$8,000 in commissions in my pocket month one. The system, the offers, the coaching — it all just works.”',
     stat: '$80K collected · $8K commission · Month 1',
   },
+  {
+    name: 'Ayah',
+    src: '/ayah-testimonial.mp4',
+    headline: 'Brand new to high ticket. $15K in commissions her first month.',
+    quote:
+      '“I had zero high ticket sales experience before joining Summit. One month in I’d already done $15,000 in commissions — the training and the offers actually deliver.”',
+    stat: '$15,000 commission · Month 1 · No prior high ticket experience',
+  },
 ];
 
-// 4 placeholder testimonials — Anthony will swap as more real ones come in.
+// 3 placeholder testimonials — Anthony will swap as more real ones come in.
 const TESTIMONIALS = [
-  {
-    name: 'Devon K.',
-    initials: 'DK',
-    color: 'bg-emerald-500',
-    headline: '$8,500 my first full month closing',
-    quote:
-      '“I came in with zero sales experience. The training is no-fluff, the coaching calls actually move the needle, and the partner they placed me with had warm calls waiting. First full month: $8.5k.”',
-    stat: '$8,500 month one',
-  },
   {
     name: 'Sarah L.',
     initials: 'SL',
