@@ -1,8 +1,6 @@
-import { promises as fs } from 'fs';
-import path from 'path';
 import VideoTestimonialCard from './VideoTestimonialCard';
 
-// All 6 slots are now real video testimonials — no placeholders left.
+// All 6 slots are real video testimonials — no placeholders.
 const VIDEO_TESTIMONIALS = [
   {
     name: 'Yen',
@@ -60,22 +58,7 @@ const VIDEO_TESTIMONIALS = [
   },
 ];
 
-async function getWinsImages() {
-  try {
-    const dir = path.join(process.cwd(), 'public', 'wins');
-    const files = await fs.readdir(dir);
-    return files
-      .filter((f) => /\.(jpe?g|png|webp|avif)$/i.test(f))
-      .sort()
-      .map((f) => `/wins/${f}`);
-  } catch {
-    return [];
-  }
-}
-
-export default async function StudentWins() {
-  const images = await getWinsImages();
-
+export default function StudentWins() {
   return (
     <section id="student-wins" className="relative py-24 md:py-32 px-6">
       <div className="absolute inset-x-0 top-0 divider-line" />
@@ -97,46 +80,6 @@ export default async function StudentWins() {
           {VIDEO_TESTIMONIALS.map((v) => (
             <VideoTestimonialCard key={v.name} {...v} />
           ))}
-        </div>
-
-        {/* Income screenshots */}
-        <div className="mt-20">
-          <div className="text-center mb-10">
-            <span className="text-xs font-heading font-semibold tracking-[0.3em] uppercase text-silver">
-              Income Screenshots
-            </span>
-            <h3 className="mt-4 text-2xl md:text-3xl font-heading font-bold text-silver">
-              The Receipts.
-            </h3>
-          </div>
-          {images.length > 0 ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {images.map((src) => (
-                <div
-                  key={src}
-                  className="rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] hover:border-white/25 transition-colors"
-                >
-                  <img
-                    src={src}
-                    alt="Student income screenshot"
-                    className="w-full h-auto block"
-                  />
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="rounded-2xl border border-dashed border-white/15 bg-white/[0.02] p-10 text-center text-gray-500 text-sm max-w-2xl mx-auto">
-              Income screenshots coming soon — drop{' '}
-              <code className="text-gray-300 bg-black/50 px-1.5 py-0.5 rounded">
-                .jpg
-              </code>{' '}
-              files into{' '}
-              <code className="text-gray-300 bg-black/50 px-1.5 py-0.5 rounded">
-                /public/wins/
-              </code>{' '}
-              to populate this grid.
-            </div>
-          )}
         </div>
       </div>
     </section>

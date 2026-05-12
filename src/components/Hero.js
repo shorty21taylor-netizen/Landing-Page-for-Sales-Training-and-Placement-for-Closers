@@ -68,15 +68,6 @@ export default function Hero() {
             See Real Student Results
           </a>
         </div>
-
-        {/* Proof bar */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs md:text-sm text-gray-200 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-          <span>250+ closers placed</span>
-          <span className="text-gray-500" aria-hidden="true">·</span>
-          <span>$2.4M+ in student commissions in 2025</span>
-          <span className="text-gray-500" aria-hidden="true">·</span>
-          <span>4.9★ avg rating</span>
-        </div>
       </div>
     </section>
   );
