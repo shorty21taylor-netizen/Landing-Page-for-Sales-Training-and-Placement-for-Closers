@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 export default function VideoTestimonialCard({
   name,
@@ -9,38 +9,54 @@ export default function VideoTestimonialCard({
   quote,
   stat,
 }) {
-  const [loaded, setLoaded] = useState(false);
+  const videoRef = useRef(null);
+  const [activated, setActivated] = useState(false);
+
+  const activate = () => {
+    if (activated) return;
+    const v = videoRef.current;
+    if (!v) return;
+    // Promote this single video to full preload + start playback.
+    // The other 5 cards stay at preload="none" so they fetch zero bytes.
+    try {
+      v.preload = 'auto';
+    } catch {}
+    setActivated(true);
+    const p = v.play();
+    if (p && typeof p.catch === 'function') {
+      // Autoplay can fail (user gesture rules, codec). Controls stay visible
+      // either way — user can hit play again. Don't crash on it.
+      p.catch(() => {});
+    }
+  };
 
   return (
     <div className="rounded-2xl border border-white/15 bg-white/[0.03] backdrop-blur-xl overflow-hidden hover:border-white/30 transition-all duration-300 flex flex-col shadow-[0_0_50px_-15px_rgba(96,165,250,0.5)]">
       <div className="relative bg-black h-[400px] md:h-[480px] flex items-center justify-center overflow-hidden">
-        {loaded ? (
-          <video
-            src={src}
-            poster={poster}
-            controls
-            autoPlay
-            playsInline
-            preload="auto"
-            className="w-full h-full object-contain"
-          />
-        ) : (
+        {/* Always-mounted <video> with poster + preload="none" + controls.
+            The browser shows the poster image natively; no video bytes
+            are fetched until activate() promotes preload to "auto". */}
+        <video
+          ref={videoRef}
+          src={src}
+          poster={poster}
+          preload="none"
+          controls
+          playsInline
+          onClick={activate}
+          className="w-full h-full object-contain"
+        />
+
+        {/* Custom play overlay covers the video before first activation,
+            intercepting all clicks so we run our activate() handler.
+            After activation the overlay unmounts and native controls win. */}
+        {!activated && (
           <button
             type="button"
-            onClick={() => setLoaded(true)}
+            onClick={activate}
             aria-label={`Play ${name}'s video testimonial`}
             className="group absolute inset-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/60 focus:ring-inset"
           >
-            {/* object-contain so the poster letterboxes the same way the
-                <video> will once it mounts — no visual jump on click,
-                works for both vertical and horizontal source videos. */}
-            <img
-              src={poster}
-              alt={`${name} — video testimonial preview`}
-              loading="lazy"
-              decoding="async"
-              className="w-full h-full object-contain"
-            />
             <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-20 h-20 rounded-full bg-white/95 backdrop-blur-sm border border-white/40 flex items-center justify-center shadow-[0_0_40px_-5px_rgba(255,255,255,0.5)] group-hover:scale-110 transition-transform">
