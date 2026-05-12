@@ -2,6 +2,8 @@ import { promises as fs } from 'fs';
 import path from 'path';
 
 // Real video testimonials — rendered before the placeholder grid items.
+// First 2 use preload="metadata" so they fetch the playable manifest eagerly;
+// the rest use preload="none" so they cost zero bytes until a visitor hits play.
 const VIDEO_TESTIMONIALS = [
   {
     name: 'Yen',
@@ -27,28 +29,26 @@ const VIDEO_TESTIMONIALS = [
       '“I had zero high ticket sales experience before joining Summit. One month in I’d already done $15,000 in commissions — the training and the offers actually deliver.”',
     stat: '$15,000 commission · Month 1 · No prior high ticket experience',
   },
+  {
+    name: 'Jarissa',
+    src: '/jarissa-testimonial.mp4',
+    headline: 'Left life insurance. $3,300 in 3 days. Zero cold calls.',
+    quote:
+      '“I was scared to leave my book of business behind in life insurance. With Summit I did $3,300 in commissions in 3 days — all inbound, no paid leads, no cold calling.”',
+    stat: '$3,300 commission · 3 days · 100% inbound',
+  },
+  {
+    name: 'Ray',
+    src: '/ray-testimonial.mp4',
+    headline: 'New to high ticket. $5,000 in 2 weeks. Pacing $10K/month.',
+    quote:
+      '“I came in brand new to high ticket sales. Two weeks in I’d already done $5,000 in commissions, pacing $10,000/month — the system actually delivers what it promises.”',
+    stat: '$5,000 commission · 2 weeks · Pacing $10K/mo',
+  },
 ];
 
-// 3 placeholder testimonials — Anthony will swap as more real ones come in.
+// Remaining placeholder testimonial — Anthony will swap as more real ones come in.
 const TESTIMONIALS = [
-  {
-    name: 'Sarah L.',
-    initials: 'SL',
-    color: 'bg-amber-500',
-    headline: 'Zero sales experience to outearning my old salary 3x',
-    quote:
-      '“I was making $52k a year teaching and never thought I could sell anything. Now I close high-ticket coaching offers and I’m on pace to triple my old salary by year-end.”',
-    stat: '3x my W2 salary',
-  },
-  {
-    name: 'Tyler M.',
-    initials: 'TM',
-    color: 'bg-violet-500',
-    headline: 'Placed with a SaaS partner in week 5',
-    quote:
-      '“The structure is the whole game. Skill, reps, and a real offer waiting at the end of the runway. I was on live demos for a SaaS partner by week five and never looked back.”',
-    stat: 'Placed week 5',
-  },
   {
     name: 'Aisha P.',
     initials: 'AP',
@@ -60,14 +60,14 @@ const TESTIMONIALS = [
   },
 ];
 
-function VideoTestimonialCard({ name, src, headline, quote, stat }) {
+function VideoTestimonialCard({ name, src, headline, quote, stat, preload }) {
   return (
     <div className="rounded-2xl border border-white/15 bg-white/[0.03] backdrop-blur-xl overflow-hidden hover:border-white/30 transition-all duration-300 flex flex-col shadow-[0_0_50px_-15px_rgba(96,165,250,0.5)]">
       <div className="relative bg-black h-[400px] md:h-[480px] flex items-center justify-center overflow-hidden">
         <video
           src={src}
           controls
-          preload="metadata"
+          preload={preload}
           playsInline
           className="w-full h-full object-contain"
         />
@@ -131,9 +131,13 @@ export default async function StudentWins() {
 
         {/* Testimonial grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Real video testimonials */}
-          {VIDEO_TESTIMONIALS.map((v) => (
-            <VideoTestimonialCard key={v.name} {...v} />
+          {/* Real video testimonials — first 2 preload metadata, rest stay idle until clicked */}
+          {VIDEO_TESTIMONIALS.map((v, i) => (
+            <VideoTestimonialCard
+              key={v.name}
+              {...v}
+              preload={i < 2 ? 'metadata' : 'none'}
+            />
           ))}
 
           {/* Placeholder text testimonials — Anthony will swap as more real ones come in */}
