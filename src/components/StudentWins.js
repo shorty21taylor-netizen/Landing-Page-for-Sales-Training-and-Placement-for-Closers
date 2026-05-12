@@ -68,7 +68,7 @@ export default function StudentWins() {
             Student Wins
           </span>
           <h2
-            className="mt-4 text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold text-silver leading-tight"
+            className="mt-4 text-4xl md:text-6xl font-heading font-bold text-silver leading-tight"
             style={{
               filter:
                 'drop-shadow(0 0 24px rgba(255,255,255,0.45)) drop-shadow(0 0 56px rgba(255,255,255,0.25)) drop-shadow(0 0 120px rgba(255,255,255,0.15))',

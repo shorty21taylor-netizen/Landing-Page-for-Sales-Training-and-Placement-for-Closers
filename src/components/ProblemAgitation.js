@@ -3,7 +3,7 @@ export default function ProblemAgitation() {
     <section className="relative py-24 md:py-32 px-6">
       <div className="max-w-3xl mx-auto text-center">
         <h2
-          className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold text-silver leading-[1.05]"
+          className="text-3xl md:text-5xl font-heading font-bold text-silver leading-tight"
           style={{
             filter:
               'drop-shadow(0 0 24px rgba(255,255,255,0.45)) drop-shadow(0 0 56px rgba(255,255,255,0.25)) drop-shadow(0 0 120px rgba(255,255,255,0.15))',
